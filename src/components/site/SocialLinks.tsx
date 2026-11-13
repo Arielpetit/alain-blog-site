@@ -1,4 +1,4 @@
-import { GraduationCap } from "lucide-react";
+import { BookOpen, Fingerprint, GraduationCap, Microscope } from "lucide-react";
 import type { SocialKey, Socials } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -27,18 +27,12 @@ const WhatsApp = svg(
 const YouTube = svg(
   "M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.87.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z",
 );
-const TextMark = ({ label }: { label: string }) => (
-  <span aria-hidden className="text-[0.66rem] font-bold leading-none tracking-tight">
-    {label}
-  </span>
-);
-
 export const SOCIALS: Record<SocialKey, { label: string; icon: React.ReactNode; color: string }> = {
   linkedin: { label: "LinkedIn", icon: <LinkedIn className="size-4" />, color: "#0a66c2" },
   scholar: { label: "Google Scholar", icon: <GraduationCap className="size-4" aria-hidden />, color: "#4285f4" },
-  researchgate: { label: "ResearchGate", icon: <TextMark label="RG" />, color: "#00ccbb" },
-  orcid: { label: "ORCID", icon: <TextMark label="iD" />, color: "#a6ce39" },
-  academia: { label: "Academia.edu", icon: <TextMark label="A." />, color: "#41454a" },
+  researchgate: { label: "ResearchGate", icon: <Microscope className="size-4" aria-hidden />, color: "#00ccbb" },
+  orcid: { label: "ORCID", icon: <Fingerprint className="size-4" aria-hidden />, color: "#a6ce39" },
+  academia: { label: "Academia.edu", icon: <BookOpen className="size-4" aria-hidden />, color: "#41454a" },
   x: { label: "X (Twitter)", icon: <XLogo className="size-3.5" />, color: "#000000" },
   facebook: { label: "Facebook", icon: <Facebook className="size-4" />, color: "#1877f2" },
   whatsapp: { label: "WhatsApp", icon: <WhatsApp className="size-4" />, color: "#25d366" },
@@ -86,28 +80,7 @@ export function SocialLinks({
   );
 }
 
-/** Version détaillée : tuiles avec nom du réseau (page Contact). */
+/** Version détaillée : icônes seules (page Contact). */
 export function SocialTiles({ socials, className }: { socials: Partial<Socials>; className?: string }) {
-  const items = activeSocials(socials);
-  if (!items.length) return null;
-  return (
-    <ul className={cn("grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3", className)}>
-      {items.map((i) => (
-        <li key={i.key}>
-          <a
-            href={i.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center gap-2.5 rounded-xl border border-line bg-surface px-3 py-2.5 text-sm text-ink transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-line-strong hover:shadow-md"
-            style={{ "--brand": i.color } as React.CSSProperties}
-          >
-            <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-surface-2 text-muted transition-colors duration-300 group-hover:bg-[var(--brand)] group-hover:text-white">
-              {i.icon}
-            </span>
-            <span className="truncate">{i.label}</span>
-          </a>
-        </li>
-      ))}
-    </ul>
-  );
+  return <SocialLinks socials={socials} className={className} />;
 }

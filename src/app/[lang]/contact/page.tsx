@@ -98,23 +98,22 @@ export default async function ContactPage({ params, searchParams }: Props) {
         </Reveal>
 
         <Reveal variant="right" delay={120} className="space-y-6 lg:col-span-5">
-          <div className="relative isolate overflow-hidden rounded-[1.25rem] bg-navy-deep p-6 text-white md:p-8">
-            <div aria-hidden className="grain absolute inset-0 -z-10" />
-            <div aria-hidden className="absolute -right-16 -top-16 -z-10 size-56 rounded-full bg-accent/20 blur-3xl" />
-            <h2 className="font-serif text-2xl font-semibold">{t.directTitle}</h2>
-            <p className="mt-1.5 text-sm text-white/60">{t.directText}</p>
-            <ul className="mt-6 divide-y divide-white/10">
+          <div className="relative isolate overflow-hidden rounded-[1.25rem] border border-line bg-surface p-6 md:p-8">
+            <div aria-hidden className="absolute -right-16 -top-16 -z-10 size-56 rounded-full bg-accent/10 blur-3xl" />
+            <h2 className="font-serif text-2xl font-semibold text-ink">{t.directTitle}</h2>
+            <p className="mt-1.5 text-sm text-muted">{t.directText}</p>
+            <ul className="mt-6 divide-y divide-line">
               {details.map(({ icon: Icon, label, value, href }) => (
                 <li key={label} className="flex items-center gap-4 py-3.5">
-                  <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-white/10 text-accent">
+                  <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent-dark">
                     <Icon className="size-[1.1rem]" aria-hidden />
                   </span>
                   <div className="min-w-0">
-                    <p className="text-xs text-white/50">{label}</p>
+                    <p className="text-xs text-muted">{label}</p>
                     {href ? (
-                      <a href={href} className="link-underline break-all font-medium text-white">{value}</a>
+                      <a href={href} className="link-underline break-all font-medium text-ink">{value}</a>
                     ) : (
-                      <p className="font-medium text-white">{value}</p>
+                      <p className="font-medium text-ink">{value}</p>
                     )}
                   </div>
                 </li>

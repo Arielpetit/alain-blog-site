@@ -247,7 +247,11 @@ export const publications = [
   { title: "Rapport sur l'accès à la justice en zone rurale", authors: "J. Dupont et al.", type: "rapport", venue: "Rapport d'expertise pour un programme de coopération", year: 2020, abstract: "Diagnostic des obstacles à l'accès au juge et recommandations opérationnelles.", featured: false },
   { title: "L'exception d'inconstitutionnalité : bilan d'une décennie", authors: "J. Dupont", type: "article", venue: "Revue de droit comparé, n° 4, p. 12-34", year: 2019, abstract: "Analyse statistique et qualitative des exceptions d'inconstitutionnalité soulevées devant les juridictions nationales.", featured: false },
   { title: "Le statut des juges constitutionnels : garanties et limites", authors: "J. Dupont", type: "communication", venue: "Journées d'études de droit constitutionnel, Brazzaville", year: 2018, abstract: "Analyse comparée des modes de désignation et des garanties statutaires des membres des juridictions constitutionnelles.", featured: false },
-].map((p) => ({ ...p, pdf_url: "", link: "" }));
+].map((p) => ({
+  ...p,
+  pdf_url: "",
+  link: `https://scholar.google.com/scholar?q=${encodeURIComponent(p.title)}`,
+}));
 
 export const conferences = [
   { title: "L'avenir de la justice constitutionnelle en Afrique", event: "Congrès de l'Association africaine de droit constitutionnel", location: "Abidjan, Côte d'Ivoire", date: "2027-02-18", role: "Conférencier", description: "Conférence inaugurale consacrée aux défis de la justice constitutionnelle face aux transitions politiques.", image: img("photo-1540575467063-178a50c2df87", 1200) },

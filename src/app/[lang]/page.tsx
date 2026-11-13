@@ -109,7 +109,9 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
             </div>
             {featuredPubs[0] && (
               <Link
-                href={href(`/publications/${featuredPubs[0].id}`)}
+                href={featuredPubs[0].link || featuredPubs[0].pdfUrl || href(`/publications/${featuredPubs[0].id}`)}
+                target={featuredPubs[0].link || featuredPubs[0].pdfUrl ? "_blank" : undefined}
+                rel="noopener noreferrer"
                 className="card group absolute -bottom-8 -left-3 right-6 animate-fade-up p-4 shadow-xl shadow-navy/15 transition-[border-color,transform] duration-500 hover:-translate-y-1 hover:border-accent/50 sm:-left-10 sm:right-auto sm:max-w-xs [animation-delay:1250ms] dark:shadow-black/50"
               >
                 <p className="text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-accent-dark">

@@ -9,6 +9,7 @@ import { CopyButton } from "./CopyButton";
 export function PublicationItem({ pub, lang, showAbstract = true }: { pub: Publication; lang: Locale; showAbstract?: boolean }) {
   const t = getDictionary(lang).publications;
   const href = localePath(lang, `/publications/${pub.id}`);
+  const external = pub.link || pub.pdfUrl || null;
   return (
     <article className="group relative -mx-4 grid grid-cols-1 gap-4 rounded-2xl px-4 py-8 transition-colors duration-300 hover:bg-surface sm:-mx-6 sm:grid-cols-[6rem_1fr] sm:gap-8 sm:px-6">
       <div className="flex items-center gap-3 sm:block">
@@ -17,26 +18,33 @@ export function PublicationItem({ pub, lang, showAbstract = true }: { pub: Publi
       </div>
       <div className="min-w-0">
         <h3 className="text-xl font-semibold leading-snug text-ink transition-colors group-hover:text-accent-dark">
-          <Link href={href} className="after:absolute after:inset-0 after:rounded-2xl">
-            {pub.title}
-          </Link>
+          {external ? (
+            <a href={external} target="_blank" rel="noopener noreferrer" className="after:absolute after:inset-0 after:rounded-2xl">
+              {pub.title}
+            </a>
+          ) : (
+            <Link href={href} className="after:absolute after:inset-0 after:rounded-2xl">
+              {pub.title}
+            </Link>
+          )}
         </h3>
         <p className="mt-1.5 text-sm text-muted">
           <span className="font-medium text-ink/80">{pub.authors}</span> — <em>{pub.venue}</em>
         </p>
         {showAbstract && pub.abstract && <p className="mt-3 line-clamp-2 max-w-3xl text-[0.95rem] leading-relaxed text-muted">{pub.abstract}</p>}
         <div className="relative z-10 mt-4 flex flex-wrap gap-2">
-          <Link href={href} className="btn btn-primary btn-sm">
-            {t.details} <ArrowUpRight className="size-3.5" aria-hidden />
-          </Link>
-          {pub.pdfUrl && (
+          {external ? (
+            <a href={external} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm">
+              <ExternalLink className="size-3.5" aria-hidden /> {t.view}
+            </a>
+          ) : (
+            <Link href={href} className="btn btn-primary btn-sm">
+              {t.details} <ArrowUpRight className="size-3.5" aria-hidden />
+            </Link>
+          )}
+          {pub.pdfUrl && external !== pub.pdfUrl && (
             <a href={pub.pdfUrl} target="_blank" rel="noopener noreferrer" className="btn btn-accent btn-sm">
               <FileDown className="size-3.5" aria-hidden /> {t.pdf}
-            </a>
-          )}
-          {pub.link && (
-            <a href={pub.link} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-sm">
-              <ExternalLink className="size-3.5" aria-hidden /> {t.view}
             </a>
           )}
           <CopyButton text={citations(pub).APA} label={t.cite} copiedLabel={t.cited} />
