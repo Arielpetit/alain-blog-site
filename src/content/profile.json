@@ -1,0 +1,118 @@
+{
+  "name": "Dr Jean Dupont",
+  "title": "Docteur en droit public · Enseignant-chercheur",
+  "tagline": "Penser le droit, éclairer l'action publique.",
+  "bioShort": "Juriste et enseignant-chercheur, je consacre mes travaux au droit constitutionnel, aux droits fondamentaux et à la gouvernance publique en Afrique. Ce site rassemble mes publications, mes analyses et mes interventions.",
+  "bioLong": "Docteur en droit public, je suis enseignant-chercheur à la Faculté de droit, où j'enseigne le droit constitutionnel, le droit administratif et les libertés fondamentales.\n\nMes recherches portent sur la **justice constitutionnelle**, la **protection des droits fondamentaux** et les **réformes institutionnelles** dans les États d'Afrique francophone. J'interroge en particulier la manière dont les juridictions constitutionnelles participent à la stabilité démocratique et à l'effectivité de l'État de droit.\n\nParallèlement à l'enseignement, j'interviens comme consultant auprès d'institutions publiques et d'organisations internationales, et je prends part régulièrement à des colloques et conférences scientifiques.\n\nÀ travers ce site, je souhaite rendre le droit plus accessible : aux étudiants qui le découvrent, aux praticiens qui l'appliquent et aux citoyens qui le vivent au quotidien.",
+  "photo": "",
+  "heroImage": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1400&q=80&auto=format&fit=crop",
+  "institution": "Faculté de droit et des sciences politiques",
+  "email": "contact@exemple.com",
+  "phone": "+242 06 000 00 00",
+  "address": "Brazzaville, République du Congo",
+  "cvUrl": "",
+  "socials": {
+    "linkedin": "https://www.linkedin.com/",
+    "scholar": "https://scholar.google.com/",
+    "researchgate": "https://www.researchgate.net/",
+    "orcid": "https://orcid.org/",
+    "academia": "https://www.academia.edu/",
+    "x": "https://x.com/",
+    "facebook": "https://www.facebook.com/",
+    "whatsapp": "https://wa.me/242060000000",
+    "youtube": ""
+  },
+  "stats": [
+    {
+      "value": "15+",
+      "label": "Années d'expérience"
+    },
+    {
+      "value": "30+",
+      "label": "Publications scientifiques"
+    },
+    {
+      "value": "40+",
+      "label": "Conférences et colloques"
+    },
+    {
+      "value": "1 200+",
+      "label": "Étudiants formés"
+    }
+  ],
+  "expertise": [
+    {
+      "title": "Droit constitutionnel",
+      "description": "Justice constitutionnelle, révisions constitutionnelles, équilibre des pouvoirs et transitions démocratiques."
+    },
+    {
+      "title": "Droits fondamentaux",
+      "description": "Protection des libertés publiques, systèmes régionaux de protection des droits de l'homme."
+    },
+    {
+      "title": "Droit administratif",
+      "description": "Contentieux administratif, responsabilité de la puissance publique, décentralisation."
+    },
+    {
+      "title": "Gouvernance publique",
+      "description": "Réformes institutionnelles, transparence, redevabilité et qualité de la norme."
+    }
+  ],
+  "education": [
+    {
+      "period": "2010 – 2014",
+      "title": "Doctorat en droit public",
+      "place": "Université — École doctorale de droit",
+      "description": "Thèse : « Le juge constitutionnel et la consolidation démocratique en Afrique francophone ». Mention très honorable avec félicitations du jury."
+    },
+    {
+      "period": "2008 – 2009",
+      "title": "Master 2 Recherche — Droit public fondamental",
+      "place": "Université — Faculté de droit",
+      "description": "Mémoire sur le contrôle de constitutionnalité des lois organiques."
+    },
+    {
+      "period": "2004 – 2008",
+      "title": "Licence et Maîtrise en droit",
+      "place": "Université — Faculté de droit",
+      "description": ""
+    }
+  ],
+  "experience": [
+    {
+      "period": "Depuis 2019",
+      "title": "Maître de conférences",
+      "place": "Faculté de droit et des sciences politiques",
+      "description": "Enseignement du droit constitutionnel et des libertés fondamentales ; direction de mémoires de Master."
+    },
+    {
+      "period": "Depuis 2017",
+      "title": "Consultant juridique",
+      "place": "Institutions publiques et organisations internationales",
+      "description": "Expertise en rédaction normative, réformes institutionnelles et formation des acteurs judiciaires."
+    },
+    {
+      "period": "2014 – 2019",
+      "title": "Maître-assistant",
+      "place": "Faculté de droit",
+      "description": "Travaux dirigés, encadrement pédagogique et participation aux projets de recherche du laboratoire."
+    }
+  ],
+  "distinctions": [
+    {
+      "year": "2023",
+      "title": "Prix de la meilleure contribution scientifique",
+      "issuer": "Association africaine de droit constitutionnel"
+    },
+    {
+      "year": "2018",
+      "title": "Bourse de recherche postdoctorale",
+      "issuer": "Programme de coopération universitaire"
+    },
+    {
+      "year": "2015",
+      "title": "Prix de thèse",
+      "issuer": "École doctorale de droit"
+    }
+  ]
+}
