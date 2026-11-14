@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, Search } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, PenLine, Search } from "lucide-react";
 import { getArticles } from "@/lib/db";
 import { PAGE_IMAGES, PageHeader } from "@/components/site/PageHeader";
 import { ArticleCard } from "@/components/site/ArticleCard";
@@ -62,7 +62,7 @@ export default async function ArticlesPage({ params, searchParams }: Props) {
       </PageHeader>
 
       <section className="container-page py-12 md:py-16">
-        <nav aria-label={t.categories} className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-2 [scrollbar-width:none]">
+        {all.length > 0 && <nav aria-label={t.categories} className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-2 [scrollbar-width:none]">
           {[{ label: t.allCategories, value: "" }, ...categories.map((c) => ({ label: c, value: c }))].map((c) => (
             <Link
               key={c.label}
@@ -74,7 +74,7 @@ export default async function ArticlesPage({ params, searchParams }: Props) {
               {c.label}
             </Link>
           ))}
-        </nav>
+        </nav>}
 
         {q && (
           <p className="mt-6 text-sm text-muted">
@@ -92,6 +92,17 @@ export default async function ArticlesPage({ params, searchParams }: Props) {
                 <ArticleCard article={a} lang={lang} />
               </Reveal>
             ))}
+          </div>
+        ) : all.length === 0 ? (
+          <div className="card mt-4 flex flex-col items-center px-6 py-16 text-center md:py-20">
+            <span className="grid size-14 place-items-center rounded-2xl bg-accent-soft text-accent-dark">
+              <PenLine className="size-6" aria-hidden />
+            </span>
+            <p className="mt-5 font-serif text-2xl font-semibold text-ink">{t.comingTitle}</p>
+            <p className="mt-2 max-w-md text-muted">{t.comingText}</p>
+            <Link href={localePath(lang, "/publications")} className="btn btn-primary mt-7">
+              {t.comingCta} <ArrowRight className="size-4" aria-hidden />
+            </Link>
           </div>
         ) : (
           <div className="mt-8 rounded-2xl border border-dashed border-line-strong py-20 text-center">

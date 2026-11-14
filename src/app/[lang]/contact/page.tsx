@@ -133,7 +133,7 @@ export default async function ContactPage({ params, searchParams }: Props) {
 
           <div>
             <p className="text-sm font-medium text-ink">{t.socialsTitle}</p>
-            <SocialTiles socials={p.socials} className="mt-3" />
+            <SocialTiles socials={p.socials} email={p.email} className="mt-3" />
           </div>
         </Reveal>
       </section>

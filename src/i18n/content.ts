@@ -22,10 +22,17 @@ export function localizeArticle(a: Article, lang: Locale): Article & { translate
   };
 }
 
-export function localizePublication(p: Publication, lang: Locale): Publication {
+export function localizePublication(p: Publication, lang: Locale): Publication & { summary: string } {
+  const summary = p.i18n?.fr?.summary ?? "";
   const en = lang === "en" ? p.i18n?.en : undefined;
-  if (!en) return p;
-  return { ...p, title: pick(p.title, en.title), abstract: pick(p.abstract, en.abstract), venue: pick(p.venue, en.venue) };
+  if (!en) return { ...p, summary };
+  return {
+    ...p,
+    title: pick(p.title, en.title),
+    abstract: pick(p.abstract, en.abstract),
+    venue: pick(p.venue, en.venue),
+    summary: pick(summary, en.summary),
+  };
 }
 
 export function localizeConference(c: Conference, lang: Locale): Conference {

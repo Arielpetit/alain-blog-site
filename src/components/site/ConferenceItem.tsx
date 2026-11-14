@@ -1,4 +1,4 @@
-import { ExternalLink, MapPin, Presentation } from "lucide-react";
+import { ExternalLink, MapPin, PlayCircle, Presentation } from "lucide-react";
 import type { Conference } from "@/lib/types";
 import { cn, formatDate } from "@/lib/utils";
 import type { Locale } from "@/i18n/config";
@@ -30,9 +30,9 @@ export function ConferenceItem({ conf, upcoming, lang }: { conf: Conference; upc
       )}
     >
       {conf.image && (
-        <div className="relative aspect-[21/9] overflow-hidden bg-navy">
+        <div className="relative aspect-[16/9] overflow-hidden bg-navy">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={conf.image} alt="" loading="lazy" className="img-zoom h-full w-full object-cover" />
+          <img src={conf.image} alt={conf.title} loading="lazy" className="img-zoom h-full w-full object-cover object-[center_22%]" />
           <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-navy-deep/60 to-transparent" />
           <DateBlock date={conf.date} upcoming={upcoming} lang={lang} className="absolute bottom-3 left-4 shadow-lg sm:bottom-4 sm:left-6" />
         </div>
@@ -54,7 +54,8 @@ export function ConferenceItem({ conf, upcoming, lang }: { conf: Conference; upc
             <div className="mt-4 flex flex-wrap gap-2">
               {conf.link && (
                 <a href={conf.link} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-sm">
-                  <ExternalLink className="size-3.5" aria-hidden /> {t.conferences.program}
+                  {/youtu\.?be/.test(conf.link) ? <PlayCircle className="size-3.5" aria-hidden /> : <ExternalLink className="size-3.5" aria-hidden />}
+                  {/youtu\.?be/.test(conf.link) ? t.conferences.video : t.conferences.program}
                 </a>
               )}
               {conf.slidesUrl && (

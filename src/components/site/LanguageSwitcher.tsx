@@ -10,7 +10,7 @@ export function LanguageSwitcher({ lang, label, className }: { lang: Locale; lab
   const pathname = usePathname();
   const { path } = stripLocale(pathname);
   return (
-    <div role="group" aria-label={label} className={cn("inline-flex items-center rounded-full border border-line bg-surface p-0.5 text-xs font-semibold", className)}>
+    <div role="group" aria-label={label} className={cn(className ?? "inline-flex", "items-center rounded-full border border-line bg-surface p-0.5 text-xs font-semibold")}>
       {(["fr", "en"] as const).map((l) => (
         <Link
           key={l}

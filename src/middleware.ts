@@ -58,5 +58,5 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   // Exclut les fichiers statiques et les routes techniques (rss.xml, sitemap.xml…).
-  matcher: ["/((?!_next/|api/|favicon|.*\\..*).*)"],
+  matcher: ["/((?!_next/|api/|favicon|icon|apple-icon|.*\\..*).*)"],
 };

@@ -164,7 +164,10 @@ export async function savePublication(form: FormData) {
     pdfUrl: await media(form, { file: "pdfFile", url: "pdfUrl", remove: "removePdf", current: existing?.pdfUrl ?? "", folder: "publications" }),
     link: str(form, "link"),
     featured: form.get("featured") === "on",
-    i18n: enFields(form, ["title", "abstract", "venue"]),
+    i18n: {
+      ...(String(form.get("summary") ?? "").trim() ? { fr: { summary: String(form.get("summary")) } } : {}),
+      ...enFields(form, ["title", "abstract", "venue", "summary"], ["summary"]),
+    },
   });
   refresh();
   redirect(`/admin/publications?ok=${id ? "modifie" : "cree"}`);

@@ -21,17 +21,7 @@ export type Stat = {
   label: string;
 };
 
-export const SOCIAL_KEYS = [
-  "linkedin",
-  "scholar",
-  "researchgate",
-  "orcid",
-  "academia",
-  "x",
-  "facebook",
-  "whatsapp",
-  "youtube",
-] as const;
+export const SOCIAL_KEYS = ["linkedin", "x", "facebook", "whatsapp", "scholar"] as const;
 export type SocialKey = (typeof SOCIAL_KEYS)[number];
 export type Socials = Record<SocialKey, string>;
 
@@ -102,7 +92,11 @@ export type Publication = {
   pdfUrl: string;
   link: string;
   featured: boolean;
-  i18n: { en?: Partial<Pick<Publication, "title" | "abstract" | "venue">> };
+  /** fr.summary : présentation détaillée (Markdown) ; en : traductions. */
+  i18n: {
+    fr?: { summary?: string };
+    en?: Partial<Pick<Publication, "title" | "abstract" | "venue">> & { summary?: string };
+  };
 };
 
 export const CONFERENCE_ROLES = [

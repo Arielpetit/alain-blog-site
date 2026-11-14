@@ -1,118 +1,56 @@
 {
-  "name": "Dr Jean Dupont",
-  "title": "Docteur en droit public · Enseignant-chercheur",
-  "tagline": "Penser le droit, éclairer l'action publique.",
-  "bioShort": "Juriste et enseignant-chercheur, je consacre mes travaux au droit constitutionnel, aux droits fondamentaux et à la gouvernance publique en Afrique. Ce site rassemble mes publications, mes analyses et mes interventions.",
-  "bioLong": "Docteur en droit public, je suis enseignant-chercheur à la Faculté de droit, où j'enseigne le droit constitutionnel, le droit administratif et les libertés fondamentales.\n\nMes recherches portent sur la **justice constitutionnelle**, la **protection des droits fondamentaux** et les **réformes institutionnelles** dans les États d'Afrique francophone. J'interroge en particulier la manière dont les juridictions constitutionnelles participent à la stabilité démocratique et à l'effectivité de l'État de droit.\n\nParallèlement à l'enseignement, j'interviens comme consultant auprès d'institutions publiques et d'organisations internationales, et je prends part régulièrement à des colloques et conférences scientifiques.\n\nÀ travers ce site, je souhaite rendre le droit plus accessible : aux étudiants qui le découvrent, aux praticiens qui l'appliquent et aux citoyens qui le vivent au quotidien.",
+  "name": "Dr Alain Bienvenu Gnassoussoumari",
+  "title": "Docteur (Ph.D) en droit · Expert en finances publiques (PSSFP)",
+  "tagline": "Contrôler, évaluer, rendre compte : au cœur de la gouvernance financière publique.",
+  "bioShort": "Docteur (Ph.D) en droit et expert en finances publiques, rattaché à l'Université de Dschang (Cameroun). Ses travaux portent sur la gouvernance financière publique, le contentieux financier public et le contrôle des biens publics au Cameroun.",
+  "bioLong": "Docteur (Ph.D) en droit et expert en finances publiques formé au **PSSFP** (Programme supérieur de spécialisation en finances publiques), Alain Bienvenu **Gnassoussoumari** est rattaché à l'**Université de Dschang** (Cameroun), où il a mené ses recherches doctorales en droit public.\n\nSes recherches portent sur la **nouvelle gouvernance financière publique** au Cameroun : le passage d'une logique de moyens à une logique de résultats, la place du **contrôle administratif des biens publics**, l'effectivité des réformes issues de la loi de 2018 portant régime financier de l'État, ainsi que la **justice financière** et la responsabilité des gestionnaires de crédits publics.\n\nDans « Les limites des réformes du contentieux financier public au Cameroun » (*IMJST*, juillet 2024), il analyse les limites organiques et substantielles du contentieux financier camerounais. Dans son article « L'incidence de la revalorisation du contrôle administratif des biens publics dans la nouvelle gouvernance financière publique camerounaise » (*International Multilingual Journal of Science and Technology*, avril 2026), il montre que cette revalorisation améliore la prévisibilité financière, tout en soulignant les limites qui en réduisent la portée : la lisibilité du circuit de contrôle et la qualité du régime de sanction.\n\nCe site rassemble ses publications, ses analyses et ses coordonnées.",
   "photo": "",
   "heroImage": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1400&q=80&auto=format&fit=crop",
-  "institution": "Faculté de droit et des sciences politiques",
-  "email": "contact@exemple.com",
-  "phone": "+242 06 000 00 00",
-  "address": "Brazzaville, République du Congo",
+  "institution": "Université de Dschang (Cameroun)",
+  "email": "alaingnassoumari1@gmail.com",
+  "phone": "+237 71 42 47 90",
+  "address": "Bangangté, Cameroun",
   "cvUrl": "",
   "socials": {
-    "linkedin": "https://www.linkedin.com/",
-    "scholar": "https://scholar.google.com/",
-    "researchgate": "https://www.researchgate.net/",
-    "orcid": "https://orcid.org/",
-    "academia": "https://www.academia.edu/",
-    "x": "https://x.com/",
-    "facebook": "https://www.facebook.com/",
-    "whatsapp": "https://wa.me/242060000000",
-    "youtube": ""
+    "linkedin": "https://www.linkedin.com/search/results/all/?keywords=Alain%20Bienvenu%20Gnassoumari",
+    "x": "https://x.com/search?q=%22Gnassoumari%22",
+    "facebook": "https://www.facebook.com/bienvenu.gnassoumari/",
+    "whatsapp": "https://wa.me/23771424790",
+    "scholar": "https://scholar.google.com/scholar?q=%22Gnassoumari%22+OR+%22Gnassoussoumari%22"
   },
-  "stats": [
-    {
-      "value": "15+",
-      "label": "Années d'expérience"
-    },
-    {
-      "value": "30+",
-      "label": "Publications scientifiques"
-    },
-    {
-      "value": "40+",
-      "label": "Conférences et colloques"
-    },
-    {
-      "value": "1 200+",
-      "label": "Étudiants formés"
-    }
-  ],
+  "stats": [],
   "expertise": [
     {
-      "title": "Droit constitutionnel",
-      "description": "Justice constitutionnelle, révisions constitutionnelles, équilibre des pouvoirs et transitions démocratiques."
+      "title": "Finances publiques",
+      "description": "Régime financier de l'État, budget-programme, exécution et contrôle de la dépense publique."
     },
     {
-      "title": "Droits fondamentaux",
-      "description": "Protection des libertés publiques, systèmes régionaux de protection des droits de l'homme."
+      "title": "Gouvernance financière publique",
+      "description": "Gestion axée sur les résultats, performance, transparence et reddition des comptes."
     },
     {
-      "title": "Droit administratif",
-      "description": "Contentieux administratif, responsabilité de la puissance publique, décentralisation."
+      "title": "Contrôle administratif",
+      "description": "Contrôles internes et externes, a priori et a posteriori, circuits de contrôle et régime de sanction."
     },
     {
-      "title": "Gouvernance publique",
-      "description": "Réformes institutionnelles, transparence, redevabilité et qualité de la norme."
+      "title": "Contentieux financier public",
+      "description": "Juridiction des comptes, CONSUPE, CDBF et responsabilité des ordonnateurs et comptables publics."
     }
   ],
   "education": [
     {
-      "period": "2010 – 2014",
-      "title": "Doctorat en droit public",
-      "place": "Université — École doctorale de droit",
-      "description": "Thèse : « Le juge constitutionnel et la consolidation démocratique en Afrique francophone ». Mention très honorable avec félicitations du jury."
+      "period": "",
+      "title": "Doctorat (Ph.D) en droit public",
+      "place": "Université de Dschang (Cameroun)",
+      "description": ""
     },
     {
-      "period": "2008 – 2009",
-      "title": "Master 2 Recherche — Droit public fondamental",
-      "place": "Université — Faculté de droit",
-      "description": "Mémoire sur le contrôle de constitutionnalité des lois organiques."
-    },
-    {
-      "period": "2004 – 2008",
-      "title": "Licence et Maîtrise en droit",
-      "place": "Université — Faculté de droit",
+      "period": "",
+      "title": "Spécialisation en finances publiques",
+      "place": "PSSFP — Programme supérieur de spécialisation en finances publiques",
       "description": ""
     }
   ],
-  "experience": [
-    {
-      "period": "Depuis 2019",
-      "title": "Maître de conférences",
-      "place": "Faculté de droit et des sciences politiques",
-      "description": "Enseignement du droit constitutionnel et des libertés fondamentales ; direction de mémoires de Master."
-    },
-    {
-      "period": "Depuis 2017",
-      "title": "Consultant juridique",
-      "place": "Institutions publiques et organisations internationales",
-      "description": "Expertise en rédaction normative, réformes institutionnelles et formation des acteurs judiciaires."
-    },
-    {
-      "period": "2014 – 2019",
-      "title": "Maître-assistant",
-      "place": "Faculté de droit",
-      "description": "Travaux dirigés, encadrement pédagogique et participation aux projets de recherche du laboratoire."
-    }
-  ],
-  "distinctions": [
-    {
-      "year": "2023",
-      "title": "Prix de la meilleure contribution scientifique",
-      "issuer": "Association africaine de droit constitutionnel"
-    },
-    {
-      "year": "2018",
-      "title": "Bourse de recherche postdoctorale",
-      "issuer": "Programme de coopération universitaire"
-    },
-    {
-      "year": "2015",
-      "title": "Prix de thèse",
-      "issuer": "École doctorale de droit"
-    }
-  ]
+  "experience": [],
+  "distinctions": []
 }

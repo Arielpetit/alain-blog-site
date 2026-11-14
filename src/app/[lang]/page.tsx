@@ -1,3 +1,4 @@
+import { shortName } from "@/lib/utils";
 import Link from "next/link";
 import { ArrowRight, BookOpen, FileDown, Landmark, Scale, ShieldCheck } from "lucide-react";
 import { getArticles, getConferences, getProfile, getPublications } from "@/lib/db";
@@ -52,7 +53,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         <div className="container-page relative grid grid-cols-1 items-center gap-14 pb-20 pt-12 md:pt-16 lg:grid-cols-12 lg:gap-16 lg:pb-28 lg:pt-20">
           <div className="lg:col-span-7">
             <p className="eyebrow animate-fade-up">{profile.institution}</p>
-            <h1 className="mt-5 text-[2.7rem] font-semibold leading-[1.02] text-ink sm:text-6xl lg:text-[4.4rem]">
+            <h1 className="mt-5 text-[2.15rem] font-semibold leading-[1.04] text-ink [overflow-wrap:anywhere] min-[400px]:text-[2.5rem] sm:text-5xl lg:text-[3.3rem] xl:text-[3.9rem]">
               {nameWords.map((w, i) => (
                 <span key={i} className="animate-word" style={{ animationDelay: `${120 + i * 110}ms` }}>
                   {w}
@@ -82,7 +83,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 </a>
               )}
             </div>
-            <SocialLinks socials={profile.socials} className="mt-9 animate-fade-up [animation-delay:700ms]" />
+            <SocialLinks socials={profile.socials} email={profile.email} className="mt-9 animate-fade-up [animation-delay:700ms]" />
           </div>
 
           <div className="relative mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none">
@@ -101,9 +102,9 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-navy-deep/65 via-transparent to-navy-deep/50" />
               <div className="absolute inset-x-5 top-5 flex animate-fade-up items-center gap-3 [animation-delay:1100ms]">
                 <Portrait name={profile.name} photo={profile.photo} avatar className="size-11 text-sm ring-2 ring-white/70" />
-                <div className="min-w-0 leading-tight text-white drop-shadow">
-                  <p className="truncate font-serif text-base font-semibold">{profile.name}</p>
-                  <p className="truncate text-xs text-white/80">{profile.institution}</p>
+                <div className="min-w-0 leading-tight text-white [text-shadow:0_1px_8px_rgb(0_0_0/0.45)]">
+                  <p className="truncate font-serif text-base font-semibold">{shortName(profile.name)}</p>
+                  <p className="mt-0.5 truncate text-xs text-white/85">{profile.institution}</p>
                 </div>
               </div>
             </div>
@@ -202,17 +203,12 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 linkLabel={t.home.articlesLink}
               />
             </Reveal>
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-              <Reveal variant="left" className="h-full">
-                <ArticleCard article={leadArticle} lang={lang} featured />
-              </Reveal>
-              <div className="grid gap-6">
-                {otherArticles.slice(0, 2).map((a, i) => (
-                  <Reveal key={a.id} variant="right" delay={120 + i * 120} className="h-full">
-                    <ArticleCard article={a} lang={lang} horizontal />
-                  </Reveal>
-                ))}
-              </div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {[leadArticle, ...otherArticles].slice(0, 3).map((a, i) => (
+                <Reveal key={a.id} delay={i * 110} className="h-full">
+                  <ArticleCard article={a} lang={lang} />
+                </Reveal>
+              ))}
             </div>
           </div>
         </section>

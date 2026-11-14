@@ -10,7 +10,8 @@
     "seed": "node --env-file=.env.local scripts/seed.mjs",
     "seed:reset": "node --env-file=.env.local scripts/seed.mjs --reset",
     "db:schema": "node --env-file=.env.local scripts/apply-schema.mjs",
-    "seed:en": "node --env-file=.env.local scripts/seed-translations.mjs"
+    "seed:en": "node --env-file=.env.local scripts/seed-translations.mjs",
+    "content:real": "node --env-file=.env.local scripts/apply-real-content.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

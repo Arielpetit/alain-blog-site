@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { LogoMark } from "@/components/shared/Logo";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
@@ -17,7 +18,7 @@ import {
   X,
 } from "lucide-react";
 import { ThemeToggle } from "@/components/shared/ThemeToggle";
-import { cn, initials } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 const GROUPS = [
   {
@@ -79,9 +80,7 @@ export function AdminShell({
   const sidebar = (
     <div className="flex h-full flex-col">
       <div className="flex h-16 items-center gap-3 px-5">
-        <span className="grid size-9 shrink-0 place-items-center rounded-full bg-accent font-serif text-sm font-semibold text-white">
-          {initials(name)}
-        </span>
+        <LogoMark className="size-9" />
         <div className="min-w-0 leading-tight">
           <p className="truncate text-sm font-semibold text-white">{name}</p>
           <p className="text-xs text-white/50">Administration</p>

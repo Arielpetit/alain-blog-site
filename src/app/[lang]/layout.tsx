@@ -15,11 +15,30 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   if (!isLocale(lang)) return {};
   const p = localizeProfile(await getProfile(), lang);
   const t = getDictionary(lang);
+  const description =
+    lang === "en"
+      ? `${p.name} — ${p.title}, ${p.institution}. Publications, analysis and contact: public financial governance, financial litigation and control of public property in Cameroon.`
+      : `${p.name} — ${p.title}, ${p.institution}. Publications, analyses et contact : gouvernance financière publique, contentieux financier et contrôle des biens publics au Cameroun.`;
   return {
     title: { default: `${p.name} — ${p.title}`, template: `%s · ${p.name}` },
-    description: p.bioShort,
-    openGraph: { type: "website", locale: t.meta.locale, siteName: p.name, title: p.name, description: p.bioShort },
-    twitter: { card: "summary_large_image", title: p.name, description: p.bioShort },
+    description,
+    applicationName: p.name,
+    authors: [{ name: p.name, url: SITE_URL }],
+    creator: p.name,
+    keywords:
+      lang === "en"
+        ? ["public finance", "public financial governance", "financial litigation", "public law", "Cameroon", "University of Dschang", p.name]
+        : ["finances publiques", "gouvernance financière publique", "contentieux financier", "droit public", "Cameroun", "Université de Dschang", p.name],
+    openGraph: {
+      type: "profile",
+      locale: t.meta.locale,
+      alternateLocale: lang === "en" ? "fr_FR" : "en_US",
+      url: localePath(lang, "/"),
+      siteName: p.name,
+      title: `${p.name} — ${p.title}`,
+      description,
+    },
+    twitter: { card: "summary_large_image", title: `${p.name} — ${p.title}`, description },
     alternates: {
       canonical: localePath(lang, "/"),
       languages: { fr: "/", en: "/en" },
@@ -38,7 +57,7 @@ export default async function SiteLayout({ children, params }: Params & { childr
       <a href="#contenu" className="btn btn-primary sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50">
         {t.nav.skip}
       </a>
-      <Header name={profile.name} lang={lang} t={t.nav} />
+      <Header name={profile.name} tagline={t.nav.brandLine} lang={lang} t={t.nav} />
       <main id="contenu" className="flex-1">{children}</main>
       <Footer profile={profile} lang={lang} t={t} />
     </div>

@@ -26,16 +26,16 @@ export function ThemeToggle({
   /** « segmented » : trois boutons côte à côte (menus, réglages). */
   variant?: "icon" | "segmented";
 }) {
-  const [mode, setMode] = useState<Mode>("system");
+  const [mode, setMode] = useState<Mode>("light");
 
   useEffect(() => {
     try {
-      setMode((localStorage.getItem("theme") as Mode) || "system");
+      setMode((localStorage.getItem("theme") as Mode) || "light");
     } catch {}
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
     const onChange = () => {
-      let m: Mode = "system";
-      try { m = (localStorage.getItem("theme") as Mode) || "system"; } catch {}
+      let m: Mode = "light";
+      try { m = (localStorage.getItem("theme") as Mode) || "light"; } catch {}
       if (m === "system") apply("system");
     };
     mq.addEventListener("change", onChange);

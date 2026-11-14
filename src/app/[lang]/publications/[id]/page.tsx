@@ -6,6 +6,7 @@ import { getProfile, getPublications } from "@/lib/db";
 import { citations, scholarUrl } from "@/lib/citation";
 import { SITE_URL } from "@/lib/utils";
 import { CitationBox } from "@/components/site/CitationBox";
+import { Markdown } from "@/components/site/Markdown";
 import { ShareButtons } from "@/components/site/ShareButtons";
 import { Portrait } from "@/components/site/Portrait";
 import { Reveal } from "@/components/site/Reveal";
@@ -82,6 +83,20 @@ export default async function PublicationPage({ params }: Props) {
           <p className="mt-4 animate-fade-up text-white/70 [animation-delay:160ms] md:text-lg">
             {pub.authors} — <em>{pub.venue}</em>
           </p>
+          {(pub.pdfUrl || pub.link) && (
+            <div className="mt-8 flex animate-fade-up flex-col gap-2.5 [animation-delay:240ms] sm:flex-row sm:flex-wrap">
+              {pub.pdfUrl && (
+                <a href={pub.pdfUrl} target="_blank" rel="noopener noreferrer" className="btn btn-accent px-6 py-3">
+                  <FileDown className="size-4" aria-hidden /> {t.publications.readPaper} (PDF)
+                </a>
+              )}
+              {pub.link && (
+                <a href={pub.link} target="_blank" rel="noopener noreferrer" className="btn border border-white/20 bg-white/5 px-6 py-3 text-white hover:bg-white/15">
+                  <ExternalLink className="size-4" aria-hidden /> {t.publications.issuePage}
+                </a>
+              )}
+            </div>
+          )}
         </div>
       </header>
 
@@ -91,6 +106,13 @@ export default async function PublicationPage({ params }: Props) {
             <Reveal>
               <h2 className="text-2xl font-semibold text-ink">{t.publications.abstract}</h2>
               <p className="mt-4 font-serif text-lg leading-relaxed text-ink/85 md:text-xl">{pub.abstract}</p>
+            </Reveal>
+          )}
+
+          {pub.summary && (
+            <Reveal className="border-t border-line pt-10">
+              <h2 className="text-2xl font-semibold text-ink">{t.publications.summaryTitle}</h2>
+              <Markdown className="no-dropcap mt-4" lang={lang}>{pub.summary}</Markdown>
             </Reveal>
           )}
 
@@ -156,7 +178,7 @@ export default async function PublicationPage({ params }: Props) {
                 <p className="truncate text-xs text-muted">{profile.title}</p>
               </div>
             </div>
-            <SocialLinks socials={profile.socials} className="mt-4" />
+            <SocialLinks socials={profile.socials} email={profile.email} className="mt-4" />
           </Reveal>
         </aside>
       </div>

@@ -28,14 +28,17 @@ export function readingTime(text: string) {
 }
 
 export function initials(name: string) {
-  return name
-    .replace(/^(Dr\.?|Pr\.?|Prof\.?)\s+/i, "")
-    .split(/\s+/)
-    .map((p) => p[0])
-    .filter(Boolean)
-    .slice(0, 2)
-    .join("")
-    .toUpperCase();
+  const parts = name.replace(/^(Dr\.?|Pr\.?|Prof\.?)\s+/i, "").split(/\s+/).filter(Boolean);
+  // Première et dernière initiale (prénom + nom de famille).
+  return ((parts[0]?.[0] ?? "") + (parts.length > 1 ? parts[parts.length - 1][0] : "")).toUpperCase();
 }
 
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
+
+/** Nom court pour les espaces réduits : « Dr Alain Bienvenu X » → « Dr Alain X ». */
+export function shortName(name: string) {
+  const m = name.match(/^((?:Dr|Pr|Prof)\.?\s+)?(.*)$/i);
+  const prefix = m?.[1] ?? "";
+  const parts = (m?.[2] ?? name).split(/\s+/).filter(Boolean);
+  return parts.length > 2 ? `${prefix}${parts[0]} ${parts[parts.length - 1]}` : name;
+}

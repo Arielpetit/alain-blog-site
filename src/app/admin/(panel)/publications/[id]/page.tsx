@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { getPublicationById } from "@/lib/db";
 import { PUBLICATION_TYPES, type Publication } from "@/lib/types";
 import { AdminHeader, Field, Section } from "@/components/admin/ui";
-import { FileField, LangTabs, SaveBar, Toggle } from "@/components/admin/FormControls";
+import { FileField, LangTabs, MarkdownEditor, SaveBar, Toggle } from "@/components/admin/FormControls";
 import { savePublication } from "../../../actions";
 
 export const metadata = { title: "Publication" };
@@ -53,6 +53,9 @@ export default async function EditPublication({ params }: { params: Promise<{ id
                   <Field label="Résumé" htmlFor="abstract">
                     <textarea id="abstract" name="abstract" rows={6} defaultValue={p.abstract} className="field" />
                   </Field>
+                  <Field label="Présentation détaillée (facultatif)" htmlFor="summary" hint="Affichée sur la fiche de la publication : problématique, plan, conclusions…">
+                    <MarkdownEditor id="summary" name="summary" defaultValue={p.i18n?.fr?.summary ?? ""} rows={12} />
+                  </Field>
                 </>
               }
               en={
@@ -65,6 +68,9 @@ export default async function EditPublication({ params }: { params: Promise<{ id
                   </Field>
                   <Field label="Abstract" htmlFor="en_abstract">
                     <textarea id="en_abstract" name="en_abstract" rows={6} defaultValue={en.abstract} className="field" />
+                  </Field>
+                  <Field label="Detailed overview (optional)" htmlFor="en_summary">
+                    <MarkdownEditor id="en_summary" name="en_summary" defaultValue={en.summary ?? ""} rows={12} />
                   </Field>
                 </>
               }

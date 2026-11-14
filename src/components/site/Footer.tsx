@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LogoMark } from "@/components/shared/Logo";
 import { ArrowUp, Mail, MapPin, Phone, Rss } from "lucide-react";
 import type { Profile } from "@/lib/types";
 import { localePath, type Locale } from "@/i18n/config";
@@ -13,10 +14,10 @@ export function Footer({ profile, lang, t }: { profile: Profile; lang: Locale; t
       <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 size-96 rounded-full bg-accent/10 blur-3xl" />
       <div className="container-page relative grid grid-cols-1 gap-12 py-16 md:grid-cols-12 md:py-20">
         <div className="md:col-span-5">
-          <p className="font-serif text-3xl text-white">{profile.name}</p>
+          <div className="flex items-center gap-4"><LogoMark className="size-14" /><p className="font-serif text-2xl leading-tight text-white md:text-[1.7rem]">{profile.name}</p></div>
           <p className="mt-1.5 text-sm text-white/55">{profile.title}</p>
           <p className="mt-6 max-w-sm font-serif text-lg italic leading-relaxed text-white/80">« {profile.tagline} »</p>
-          <SocialLinks socials={profile.socials} className="mt-7" variant="dark" />
+          <SocialLinks socials={profile.socials} email={profile.email} className="mt-7" variant="dark" />
         </div>
 
         <nav aria-label={t.footer.navigation} className="md:col-span-3">

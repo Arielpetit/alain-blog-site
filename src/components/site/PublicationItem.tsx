@@ -33,18 +33,17 @@ export function PublicationItem({ pub, lang, showAbstract = true }: { pub: Publi
         </p>
         {showAbstract && pub.abstract && <p className="mt-3 line-clamp-2 max-w-3xl text-[0.95rem] leading-relaxed text-muted">{pub.abstract}</p>}
         <div className="relative z-10 mt-4 flex flex-wrap gap-2">
-          {external ? (
-            <a href={external} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm">
-              <ExternalLink className="size-3.5" aria-hidden /> {t.view}
-            </a>
-          ) : (
-            <Link href={href} className="btn btn-primary btn-sm">
-              {t.details} <ArrowUpRight className="size-3.5" aria-hidden />
-            </Link>
-          )}
-          {pub.pdfUrl && external !== pub.pdfUrl && (
+          {pub.pdfUrl && (
             <a href={pub.pdfUrl} target="_blank" rel="noopener noreferrer" className="btn btn-accent btn-sm">
-              <FileDown className="size-3.5" aria-hidden /> {t.pdf}
+              <FileDown className="size-3.5" aria-hidden /> {t.readPaper}
+            </a>
+          )}
+          <Link href={href} className={pub.pdfUrl ? "btn btn-outline btn-sm" : "btn btn-primary btn-sm"}>
+            {t.details} <ArrowUpRight className="size-3.5" aria-hidden />
+          </Link>
+          {pub.link && (
+            <a href={pub.link} target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-sm text-muted hover:text-ink">
+              <ExternalLink className="size-3.5" aria-hidden /> {t.issuePage}
             </a>
           )}
           <CopyButton text={citations(pub).APA} label={t.cite} copiedLabel={t.cited} />

@@ -1,3 +1,4 @@
+import { LogoMark } from "@/components/shared/Logo";
 import { cn, initials } from "@/lib/utils";
 
 /** Photo du profil, ou monogramme élégant si aucune photo n'est fournie. */
@@ -19,9 +20,7 @@ export function Portrait({
         // eslint-disable-next-line @next/next/no-img-element
         <img src={photo} alt={avatar ? "" : name} className="h-full w-full object-cover" />
       ) : avatar ? (
-        <span aria-hidden className="grid h-full w-full place-items-center font-serif text-[0.95em] font-semibold text-white">
-          {initials(name)}
-        </span>
+        <LogoMark className="h-full w-full" />
       ) : (
         <div className="relative grid h-full w-full place-items-center" role="img" aria-label={name}>
           <div

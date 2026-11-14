@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import { LogoMark } from "@/components/shared/Logo";
 import Link from "next/link";
 import { ArrowLeft, ShieldCheck } from "lucide-react";
 import { getProfile } from "@/lib/db";
-import { initials } from "@/lib/utils";
 import { LoginForm } from "@/components/admin/LoginForm";
 
 export const dynamic = "force-dynamic";
@@ -32,9 +32,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
       <div className="grid place-items-center bg-paper px-5 py-12">
         <div className="w-full max-w-sm animate-fade-up">
           <div className="text-center">
-            <span className="mx-auto grid size-14 place-items-center rounded-full bg-navy font-serif text-lg font-semibold text-white">
-              {initials(profile.name)}
-            </span>
+            <LogoMark className="mx-auto size-14" />
             <h1 className="mt-5 text-3xl font-semibold text-ink">Connexion</h1>
             <p className="mt-2 text-sm text-muted">Gérez vos articles, publications et messages.</p>
           </div>

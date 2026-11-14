@@ -23,7 +23,7 @@ export const viewport: Viewport = {
 };
 
 /** Applique le thème avant le premier rendu (aucun flash). */
-const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem('theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.dataset.theme=d?'dark':'light';}catch(e){document.documentElement.dataset.theme='light';}})();`;
+const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem('theme')||'light';var d=t==='dark'||(t==='system'&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.dataset.theme=d?'dark':'light';}catch(e){document.documentElement.dataset.theme='light';}})();`;
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const h = (await headers()).get("x-locale");

@@ -3,14 +3,10 @@ import { SOCIAL_KEYS, type Profile, type ProfileText, type SocialKey, type Timel
 
 const SOCIAL_LABELS: Record<SocialKey, string> = {
   linkedin: "LinkedIn",
-  scholar: "Google Scholar",
-  researchgate: "ResearchGate",
-  orcid: "ORCID",
-  academia: "Academia.edu",
   x: "X (Twitter)",
   facebook: "Facebook",
   whatsapp: "WhatsApp",
-  youtube: "YouTube",
+  scholar: "Google Scholar (profil de chercheur)",
 };
 import { AdminHeader, Field, Section } from "@/components/admin/ui";
 import { FileField, LangTabs, MarkdownEditor, SaveBar } from "@/components/admin/FormControls";

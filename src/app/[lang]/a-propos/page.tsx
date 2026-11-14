@@ -27,9 +27,9 @@ function Timeline({ items }: { items: TimelineItem[] }) {
       {items.map((it, i) => (
         <Reveal as="li" key={i} delay={i * 90} className="group relative pb-10 pl-8 last:pb-0">
           <span aria-hidden className="absolute -left-[5px] top-1.5 size-[9px] rounded-full bg-accent ring-4 ring-paper transition-transform duration-500 group-hover:scale-150" />
-          <p className="text-sm font-medium text-accent-dark">{it.period}</p>
+          {it.period && <p className="text-sm font-medium text-accent-dark">{it.period}</p>}
           <h3 className="mt-1 text-xl font-semibold text-ink">{it.title}</h3>
-          <p className="mt-0.5 text-sm text-muted">{it.place}</p>
+          {it.place && <p className="mt-0.5 text-sm text-muted">{it.place}</p>}
           {it.description && <p className="mt-2.5 leading-relaxed text-ink/80">{it.description}</p>}
         </Reveal>
       ))}
@@ -86,7 +86,7 @@ export default async function AboutPage({ params }: Props) {
               )}
               <Link href={localePath(lang, "/contact")} className="btn btn-outline">{t.about.contactMe}</Link>
             </div>
-            <SocialLinks socials={p.socials} className="mt-6" />
+            <SocialLinks socials={p.socials} email={p.email} className="mt-6" />
           </div>
         </Reveal>
 
