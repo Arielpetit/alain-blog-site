@@ -115,7 +115,8 @@ export async function saveArticle(form: FormData) {
   const id = str(form, "id") || null;
   const existing = id ? await db.getArticleById(id) : undefined;
   const title = str(form, "title");
-  let slug = slugify(str(form, "slug") || title) || `article-${Date.now()}`;
+  // Adresse stable : générée à la création, conservée ensuite (liens partagés).
+  let slug = existing?.slug || slugify(title) || `article-${Date.now()}`;
   if (await db.slugExists(slug, id ?? undefined)) slug = `${slug}-${Date.now().toString(36).slice(-4)}`;
 
   await db.upsertArticle(id, {
@@ -123,12 +124,12 @@ export async function saveArticle(form: FormData) {
     title,
     excerpt: str(form, "excerpt"),
     content: String(form.get("content") ?? ""),
-    category: str(form, "category") || "Général",
-    tags: str(form, "tags").split(",").map((t) => t.trim()).filter(Boolean),
+    category: str(form, "category") || existing?.category || "Analyse",
+    tags: form.has("tags") ? str(form, "tags").split(",").map((t) => t.trim()).filter(Boolean) : existing?.tags ?? [],
     cover: await media(form, { file: "coverFile", url: "cover", remove: "removeCover", current: existing?.cover ?? "", folder: "articles" }),
     published: form.get("published") === "on",
     date: str(form, "date") || new Date().toISOString().slice(0, 10),
-    i18n: enFields(form, ["title", "excerpt", "content", "category"], ["content"]),
+    i18n: enFields(form, ["title", "excerpt", "content"], ["content"]),
   });
   refresh();
   redirect(`/admin/articles?ok=${id ? "modifie" : "cree"}`);

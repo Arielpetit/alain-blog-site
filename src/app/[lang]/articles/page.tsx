@@ -62,7 +62,7 @@ export default async function ArticlesPage({ params, searchParams }: Props) {
       </PageHeader>
 
       <section className="container-page py-12 md:py-16">
-        {all.length > 0 && <nav aria-label={t.categories} className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-2 [scrollbar-width:none]">
+        {categories.length > 1 && <nav aria-label={t.categories} className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-2 [scrollbar-width:none]">
           {[{ label: t.allCategories, value: "" }, ...categories.map((c) => ({ label: c, value: c }))].map((c) => (
             <Link
               key={c.label}

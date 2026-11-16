@@ -11,13 +11,13 @@ function pick<T>(base: T, tr: T | undefined): T {
 
 export function localizeArticle(a: Article, lang: Locale): Article & { translated: boolean } {
   const en = lang === "en" ? a.i18n?.en : undefined;
-  if (!en) return { ...a, translated: lang === "fr" };
+  if (!en) return { ...a, category: lang === "en" && a.category === "Analyse" ? "Analysis" : a.category, translated: lang === "fr" };
   return {
     ...a,
     title: pick(a.title, en.title),
     excerpt: pick(a.excerpt, en.excerpt),
     content: pick(a.content, en.content),
-    category: pick(a.category, en.category),
+    category: pick(a.category === "Analyse" ? "Analysis" : a.category, en.category),
     translated: !!en.content?.trim(),
   };
 }

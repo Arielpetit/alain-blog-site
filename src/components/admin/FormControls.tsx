@@ -2,24 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
-import {
-  Bold,
-  FileText,
-  Heading2,
-  Heading3,
-  ImageIcon,
-  Italic,
-  Link2,
-  List,
-  ListOrdered,
-  LoaderCircle,
-  Quote,
-  Save,
-  Trash2,
-  UploadCloud,
-  X,
-} from "lucide-react";
-import { Markdown } from "@/components/site/Markdown";
+import { FileText, ImageIcon, LoaderCircle, Save, Trash2, UploadCloud, X } from "lucide-react";
+import { RichTextEditor } from "./RichTextEditor";
 import { cn } from "@/lib/utils";
 
 /* ---------------------------------------------------------------------
@@ -168,108 +152,12 @@ export function LangTabs({ fr, en, enFilled }: { fr: React.ReactNode; en: React.
 }
 
 /* ---------------------------------------------------------------------
-   Éditeur Markdown avec barre d'outils et aperçu
+   Éditeur de texte
    --------------------------------------------------------------------- */
 
-type Action = { icon: typeof Bold; label: string; before: string; after?: string; block?: boolean };
-const ACTIONS: Action[] = [
-  { icon: Heading2, label: "Titre de section", before: "## ", block: true },
-  { icon: Heading3, label: "Sous-titre", before: "### ", block: true },
-  { icon: Bold, label: "Gras", before: "**", after: "**" },
-  { icon: Italic, label: "Italique", before: "*", after: "*" },
-  { icon: Quote, label: "Citation", before: "> ", block: true },
-  { icon: List, label: "Liste à puces", before: "- ", block: true },
-  { icon: ListOrdered, label: "Liste numérotée", before: "1. ", block: true },
-  { icon: Link2, label: "Lien", before: "[", after: "](https://)" },
-];
-
-export function MarkdownEditor({ name, defaultValue = "", rows = 18, id }: { name: string; defaultValue?: string; rows?: number; id?: string }) {
-  const [value, setValue] = useState(defaultValue);
-  const [tab, setTab] = useState<"write" | "preview">("write");
-  const ref = useRef<HTMLTextAreaElement>(null);
-  const words = value.trim() ? value.trim().split(/\s+/).length : 0;
-
-  const apply = (a: Action) => {
-    const el = ref.current;
-    if (!el) return;
-    const { selectionStart: s, selectionEnd: e } = el;
-    const selected = value.slice(s, e) || (a.block ? "" : "texte");
-    let next: string;
-    let cursor: number;
-    if (a.block) {
-      const lineStart = value.lastIndexOf("\n", s - 1) + 1;
-      next = value.slice(0, lineStart) + a.before + value.slice(lineStart);
-      cursor = e + a.before.length;
-    } else {
-      next = value.slice(0, s) + a.before + selected + (a.after ?? "") + value.slice(e);
-      cursor = s + a.before.length + selected.length;
-    }
-    setValue(next);
-    requestAnimationFrame(() => {
-      el.focus();
-      el.setSelectionRange(cursor, cursor);
-    });
-  };
-
-  return (
-    <div className="overflow-hidden rounded-xl border border-line-strong bg-surface focus-within:border-accent focus-within:shadow-[0_0_0_3px_color-mix(in_srgb,var(--accent)_20%,transparent)]">
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line bg-surface-2 px-2 py-1.5">
-        <div role="tablist" className="flex">
-          {(["write", "preview"] as const).map((t) => (
-            <button
-              key={t}
-              type="button"
-              role="tab"
-              aria-selected={tab === t}
-              onClick={() => setTab(t)}
-              className={cn(
-                "rounded-md px-3 py-1.5 text-sm transition-colors",
-                tab === t ? "bg-surface font-medium text-ink shadow-sm" : "text-muted hover:text-ink",
-              )}
-            >
-              {t === "write" ? "Écrire" : "Aperçu"}
-            </button>
-          ))}
-        </div>
-        {tab === "write" && (
-          <div className="flex flex-wrap items-center" role="toolbar" aria-label="Mise en forme">
-            {ACTIONS.map((a) => (
-              <button
-                key={a.label}
-                type="button"
-                onClick={() => apply(a)}
-                className="grid size-8 place-items-center rounded-md text-muted transition-colors hover:bg-surface hover:text-ink"
-                title={a.label}
-                aria-label={a.label}
-              >
-                <a.icon className="size-4" />
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-      <textarea
-        ref={ref}
-        id={id}
-        name={name}
-        rows={rows}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        className={cn("block w-full resize-y border-0 bg-transparent p-4 font-mono text-[0.86rem] leading-relaxed text-ink focus:outline-none", tab !== "write" && "hidden")}
-      />
-      {tab === "preview" && (
-        <div className="min-h-[20rem] p-5 sm:p-6">
-          {value.trim() ? <Markdown className="prose-base no-dropcap">{value}</Markdown> : <p className="text-sm text-muted">Rien à prévisualiser.</p>}
-        </div>
-      )}
-      <div className="flex justify-between border-t border-line px-4 py-2 text-xs text-muted">
-        <span>Markdown</span>
-        <span>
-          {words} mot{words > 1 ? "s" : ""} · ≈ {Math.max(1, Math.round(words / 220))} min
-        </span>
-      </div>
-    </div>
-  );
+/** Éditeur de texte riche (visuel) — conserve l'ancien nom pour les formulaires existants. */
+export function MarkdownEditor({ name, defaultValue = "", rows = 18, id, placeholder }: { name: string; defaultValue?: string; rows?: number; id?: string; placeholder?: string }) {
+  return <RichTextEditor name={name} id={id} defaultValue={defaultValue} placeholder={placeholder} minHeight={`${Math.max(8, rows * 1.4)}rem`} />;
 }
 
 /* ---------------------------------------------------------------------
