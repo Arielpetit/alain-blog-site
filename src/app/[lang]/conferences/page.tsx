@@ -32,11 +32,11 @@ export default async function ConferencesPage({ params }: Props) {
   return (
     <>
       <PageHeader eyebrow={t.conferences.eyebrow} title={t.conferences.title} description={t.conferences.description} image={PAGE_IMAGES.conferences} />
-      <div className="container-page py-14 md:py-20">
+      <div className="container-page py-10 sm:py-14 md:py-20">
         {upcoming.length > 0 && (
           <section aria-labelledby="a-venir" className="mb-20">
             <Reveal>
-              <h2 id="a-venir" className="flex items-center gap-3 text-3xl font-semibold text-ink md:text-4xl">
+              <h2 id="a-venir" className="flex items-center gap-3 text-2xl font-semibold text-ink sm:text-3xl md:text-4xl">
                 {t.conferences.upcoming}
                 <span className="relative flex size-2.5">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
@@ -56,7 +56,7 @@ export default async function ConferencesPage({ params }: Props) {
 
         <section aria-labelledby="passees">
           <Reveal>
-            <h2 id="passees" className="text-3xl font-semibold text-ink md:text-4xl">{t.conferences.past}</h2>
+            <h2 id="passees" className="text-2xl font-semibold text-ink sm:text-3xl md:text-4xl">{t.conferences.past}</h2>
           </Reveal>
           {past.length === 0 && <p className="mt-6 text-muted">{t.conferences.nonePast}</p>}
           {Object.keys(byYear)
@@ -64,7 +64,7 @@ export default async function ConferencesPage({ params }: Props) {
             .map((year) => (
               <div key={year} className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-[7rem_1fr]">
                 <Reveal variant="left">
-                  <p className="font-serif text-4xl font-semibold text-accent-dark md:sticky md:top-28">{year}</p>
+                  <p className="font-serif text-3xl font-semibold text-accent-dark sm:text-4xl md:sticky md:top-28">{year}</p>
                 </Reveal>
                 <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
                   {byYear[year].map((c, i) => (
@@ -77,14 +77,14 @@ export default async function ConferencesPage({ params }: Props) {
             ))}
         </section>
 
-        <Reveal className="card mt-20 flex flex-col items-start gap-5 p-6 sm:flex-row sm:items-center sm:justify-between md:p-10">
+        <Reveal className="card mt-14 flex flex-col items-start gap-4 p-5 sm:mt-20 sm:gap-5 sm:p-6 sm:flex-row sm:items-center sm:justify-between md:p-10">
           <div>
-            <p className="font-serif text-2xl font-semibold text-ink md:text-3xl">{t.conferences.inviteTitle}</p>
+            <p className="font-serif text-xl font-semibold text-ink sm:text-2xl md:text-3xl">{t.conferences.inviteTitle}</p>
             <p className="mt-1.5 text-muted">{t.conferences.inviteText}</p>
           </div>
           <Link
             href={localePath(lang, `/contact?objet=${encodeURIComponent(t.conferences.inviteSubject)}`)}
-            className="btn btn-primary shrink-0 px-6 py-3"
+            className="btn btn-primary shrink-0 px-5 py-2.5 sm:px-6 sm:py-3"
           >
             {t.conferences.inviteButton} <ArrowRight className="size-4" aria-hidden />
           </Link>

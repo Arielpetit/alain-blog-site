@@ -37,19 +37,19 @@ export default async function ContactPage({ params, searchParams }: Props) {
   return (
     <>
       <PageHeader eyebrow={t.eyebrow} title={t.title} description={t.description} image={PAGE_IMAGES.contact}>
-        <div className="mt-9 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
+        <div className="mt-6 flex flex-col gap-2 sm:mt-9 sm:flex-row sm:flex-wrap sm:gap-2.5">
           {p.email && (
-            <a href={`mailto:${p.email}`} className="btn btn-accent px-5 py-3">
+            <a href={`mailto:${p.email}`} className="btn btn-accent px-5 py-2.5 sm:py-3">
               <Mail className="size-4" aria-hidden /> {t.writeEmail}
             </a>
           )}
           {p.socials.whatsapp && (
-            <a href={p.socials.whatsapp} target="_blank" rel="noopener noreferrer" className="btn border border-white/20 bg-white/5 px-5 py-3 text-white backdrop-blur hover:bg-white/15">
+            <a href={p.socials.whatsapp} target="_blank" rel="noopener noreferrer" className="btn border border-white/20 bg-white/5 px-5 py-2.5 sm:py-3 text-white backdrop-blur hover:bg-white/15">
               <span className="text-[#25d366]">{SOCIALS.whatsapp.icon}</span> {t.whatsapp}
             </a>
           )}
           {tel && (
-            <a href={tel} className="btn border border-white/20 bg-white/5 px-5 py-3 text-white backdrop-blur hover:bg-white/15">
+            <a href={tel} className="btn border border-white/20 bg-white/5 px-5 py-2.5 sm:py-3 text-white backdrop-blur hover:bg-white/15">
               <Phone className="size-4" aria-hidden /> {t.call}
             </a>
           )}
@@ -57,7 +57,7 @@ export default async function ContactPage({ params, searchParams }: Props) {
       </PageHeader>
 
       {/* Motifs de prise de contact */}
-      <section className="container-page pt-14 md:pt-20">
+      <section className="container-page pt-10 sm:pt-14 md:pt-20">
         <Reveal>
           <p className="eyebrow">{t.reasonsEyebrow}</p>
         </Reveal>
@@ -70,13 +70,13 @@ export default async function ContactPage({ params, searchParams }: Props) {
                 <Link
                   href={localePath(lang, `/contact?objet=${encodeURIComponent(r.subject)}#formulaire`)}
                   scroll={false}
-                  className={`card hover-lift group flex h-full flex-col p-6 ${active ? "border-accent ring-1 ring-accent" : ""}`}
+                  className={`card hover-lift group flex h-full flex-col p-5 sm:p-6 ${active ? "border-accent ring-1 ring-accent" : ""}`}
                 >
                   <span className="grid size-11 place-items-center rounded-xl bg-accent-soft text-accent-dark transition-colors duration-500 group-hover:bg-primary group-hover:text-primary-fg">
                     <Icon className="size-5" aria-hidden />
                   </span>
-                  <span className="mt-5 font-serif text-xl font-semibold text-ink">{r.title}</span>
-                  <span className="mt-2 flex-1 text-[0.95rem] leading-relaxed text-muted">{r.text}</span>
+                  <span className="mt-4 font-serif text-lg font-semibold text-ink sm:mt-5 sm:text-xl">{r.title}</span>
+                  <span className="mt-1.5 flex-1 text-sm leading-relaxed text-muted sm:mt-2 sm:text-[0.95rem]">{r.text}</span>
                   <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-accent-dark">
                     {t.choose} <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden />
                   </span>
@@ -91,14 +91,14 @@ export default async function ContactPage({ params, searchParams }: Props) {
       <section id="formulaire" className="container-page grid grid-cols-1 scroll-mt-24 gap-8 py-14 md:py-20 lg:grid-cols-12 lg:gap-10">
         <Reveal className="lg:col-span-7">
           <div className="mb-5">
-            <h2 className="text-3xl font-semibold text-ink">{t.formTitle}</h2>
+            <h2 className="text-2xl font-semibold text-ink sm:text-3xl">{t.formTitle}</h2>
             <p className="mt-1.5 text-sm text-muted">{t.formText}</p>
           </div>
           <ContactForm key={objet ?? ""} defaultSubject={objet} lang={lang} />
         </Reveal>
 
         <Reveal variant="right" delay={120} className="space-y-6 lg:col-span-5">
-          <div className="relative isolate overflow-hidden rounded-[1.25rem] border border-line bg-surface p-6 md:p-8">
+          <div className="relative isolate overflow-hidden rounded-[1.25rem] border border-line bg-surface p-5 sm:p-6 md:p-8">
             <div aria-hidden className="absolute -right-16 -top-16 -z-10 size-56 rounded-full bg-accent/10 blur-3xl" />
             <h2 className="font-serif text-2xl font-semibold text-ink">{t.directTitle}</h2>
             <p className="mt-1.5 text-sm text-muted">{t.directText}</p>

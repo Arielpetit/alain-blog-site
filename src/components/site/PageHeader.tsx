@@ -37,11 +37,11 @@ export function PageHeader({
           <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-navy-deep/60 to-transparent" />
         </>
       )}
-      <div className={cn("container-page", image ? "py-20 md:py-28" : "py-14 md:py-20")}>
+      <div className={cn("container-page", image ? "py-12 sm:py-20 md:py-28" : "py-10 sm:py-14 md:py-20")}>
         <p className={cn("eyebrow animate-fade-up", image && "text-accent")}>{eyebrow}</p>
         <h1
           className={cn(
-            "mt-4 max-w-3xl animate-fade-up text-4xl font-semibold [animation-delay:80ms] md:text-6xl",
+            "mt-3 max-w-3xl animate-fade-up text-[1.9rem] font-semibold leading-tight [animation-delay:80ms] sm:mt-4 sm:text-4xl md:text-6xl",
             image ? "text-white" : "text-ink",
           )}
         >
@@ -50,7 +50,7 @@ export function PageHeader({
         {description && (
           <p
             className={cn(
-              "mt-5 max-w-2xl animate-fade-up text-lg leading-relaxed [animation-delay:160ms]",
+              "mt-3 max-w-2xl animate-fade-up text-[0.95rem] leading-relaxed [animation-delay:160ms] sm:mt-5 sm:text-lg",
               image ? "text-white/75" : "text-muted",
             )}
           >

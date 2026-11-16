@@ -71,7 +71,7 @@ export default async function PublicationPage({ params }: Props) {
       <header className="relative overflow-hidden bg-navy-deep text-white">
         <div aria-hidden className="grain absolute inset-0" />
         <div aria-hidden className="absolute -right-24 -top-24 size-96 rounded-full bg-accent/15 blur-3xl" />
-        <div className="container-page relative max-w-5xl py-14 md:py-20">
+        <div className="container-page relative max-w-5xl py-10 sm:py-14 md:py-20">
           <Link href={localePath(lang, "/publications")} className="group inline-flex animate-fade-in items-center gap-1.5 text-sm text-white/60 hover:text-white">
             <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" aria-hidden /> {t.publications.backToList}
           </Link>
@@ -79,19 +79,19 @@ export default async function PublicationPage({ params }: Props) {
             <span className="badge bg-accent/20 text-accent">{t.publications.types[pub.type]}</span>
             <span className="badge bg-white/10 text-white/80">{pub.year}</span>
           </div>
-          <h1 className="mt-5 animate-fade-up text-[2rem] font-semibold leading-tight [animation-delay:80ms] md:text-5xl">{pub.title}</h1>
-          <p className="mt-4 animate-fade-up text-white/70 [animation-delay:160ms] md:text-lg">
+          <h1 className="mt-4 animate-fade-up text-[1.5rem] font-semibold leading-tight [animation-delay:80ms] sm:mt-5 sm:text-[2rem] md:text-5xl">{pub.title}</h1>
+          <p className="mt-3 animate-fade-up text-sm text-white/70 [animation-delay:160ms] sm:mt-4 sm:text-base md:text-lg">
             {pub.authors} — <em>{pub.venue}</em>
           </p>
           {(pub.pdfUrl || pub.link) && (
-            <div className="mt-8 flex animate-fade-up flex-col gap-2.5 [animation-delay:240ms] sm:flex-row sm:flex-wrap">
+            <div className="mt-6 flex animate-fade-up flex-col gap-2 [animation-delay:240ms] sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-2.5">
               {pub.pdfUrl && (
-                <a href={pub.pdfUrl} target="_blank" rel="noopener noreferrer" className="btn btn-accent px-6 py-3">
+                <a href={pub.pdfUrl} target="_blank" rel="noopener noreferrer" className="btn btn-accent px-5 py-2.5 sm:px-6 sm:py-3">
                   <FileDown className="size-4" aria-hidden /> {t.publications.readPaper} (PDF)
                 </a>
               )}
               {pub.link && (
-                <a href={pub.link} target="_blank" rel="noopener noreferrer" className="btn border border-white/20 bg-white/5 px-6 py-3 text-white hover:bg-white/15">
+                <a href={pub.link} target="_blank" rel="noopener noreferrer" className="btn border border-white/20 bg-white/5 px-5 py-2.5 text-white hover:bg-white/15 sm:px-6 sm:py-3">
                   <ExternalLink className="size-4" aria-hidden /> {t.publications.issuePage}
                 </a>
               )}
@@ -104,14 +104,14 @@ export default async function PublicationPage({ params }: Props) {
         <div className="min-w-0 space-y-10">
           {pub.abstract && (
             <Reveal>
-              <h2 className="text-2xl font-semibold text-ink">{t.publications.abstract}</h2>
-              <p className="mt-4 font-serif text-lg leading-relaxed text-ink/85 md:text-xl">{pub.abstract}</p>
+              <h2 className="text-xl font-semibold text-ink sm:text-2xl">{t.publications.abstract}</h2>
+              <p className="mt-3 font-serif text-base leading-relaxed text-ink/85 sm:mt-4 sm:text-lg md:text-xl">{pub.abstract}</p>
             </Reveal>
           )}
 
           {pub.summary && (
             <Reveal className="border-t border-line pt-10">
-              <h2 className="text-2xl font-semibold text-ink">{t.publications.summaryTitle}</h2>
+              <h2 className="text-xl font-semibold text-ink sm:text-2xl">{t.publications.summaryTitle}</h2>
               <Markdown className="no-dropcap mt-4" lang={lang}>{pub.summary}</Markdown>
             </Reveal>
           )}

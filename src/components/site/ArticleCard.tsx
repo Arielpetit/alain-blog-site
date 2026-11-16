@@ -40,7 +40,7 @@ export function ArticleCard({
         article={article}
         className={cn(horizontal ? "aspect-[16/9] sm:aspect-auto sm:w-52 sm:shrink-0" : featured ? "aspect-[16/10] min-h-56 flex-1" : "aspect-[16/9]")}
       />
-      <div className={cn("flex flex-col p-6", featured ? "md:p-8" : "flex-1")}>
+      <div className={cn("flex flex-col p-5 sm:p-6", featured ? "md:p-8" : "flex-1")}>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-muted">
           <span className="badge">{article.category}</span>
           <time dateTime={article.date}>{formatDate(article.date, undefined, lang)}</time>
@@ -48,7 +48,7 @@ export function ArticleCard({
         <h3
           className={cn(
             "mt-4 font-semibold leading-snug text-ink transition-colors duration-300 group-hover:text-accent-dark",
-            featured ? "text-2xl md:text-[1.9rem]" : "text-xl",
+            featured ? "text-xl sm:text-2xl md:text-[1.9rem]" : "text-lg sm:text-xl",
           )}
         >
           <Link href={localePath(lang, `/articles/${article.slug}`)} className="after:absolute after:inset-0">

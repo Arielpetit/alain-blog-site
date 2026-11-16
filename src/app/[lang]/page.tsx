@@ -50,10 +50,10 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
       <section className="relative overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute -right-40 -top-40 size-[36rem] rounded-full bg-accent-soft/80 blur-3xl dark:bg-accent-soft/60" />
         <div aria-hidden className="pointer-events-none absolute -left-32 bottom-0 size-80 rounded-full bg-accent-soft/40 blur-3xl" />
-        <div className="container-page relative grid grid-cols-1 items-center gap-14 pb-20 pt-12 md:pt-16 lg:grid-cols-12 lg:gap-16 lg:pb-28 lg:pt-20">
+        <div className="container-page relative grid grid-cols-1 items-center gap-12 pb-16 pt-8 sm:pb-20 sm:pt-12 md:pt-16 lg:grid-cols-12 lg:gap-16 lg:pb-28 lg:pt-20">
           <div className="lg:col-span-7">
             <p className="eyebrow animate-fade-up">{profile.institution}</p>
-            <h1 className="mt-5 text-[2.15rem] font-semibold leading-[1.04] text-ink [overflow-wrap:anywhere] min-[400px]:text-[2.5rem] sm:text-5xl lg:text-[3.3rem] xl:text-[3.9rem]">
+            <h1 className="mt-4 text-[1.85rem] font-semibold leading-[1.06] text-ink [overflow-wrap:anywhere] min-[400px]:text-[2.1rem] sm:mt-5 sm:text-5xl lg:text-[3.3rem] xl:text-[3.9rem]">
               {nameWords.map((w, i) => (
                 <span key={i} className="animate-word" style={{ animationDelay: `${120 + i * 110}ms` }}>
                   {w}
@@ -61,32 +61,32 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 </span>
               ))}
             </h1>
-            <p className="mt-4 animate-fade-up text-lg font-medium text-accent-dark [animation-delay:380ms] md:text-xl">
+            <p className="mt-3 animate-fade-up text-base font-medium text-accent-dark [animation-delay:380ms] sm:mt-4 sm:text-lg md:text-xl">
               {profile.title}
             </p>
-            <blockquote className="mt-7 max-w-xl animate-fade-up border-l-2 border-accent pl-5 font-serif text-2xl italic leading-snug text-ink/90 [animation-delay:460ms] md:text-[1.75rem]">
+            <blockquote className="mt-5 max-w-xl animate-fade-up border-l-2 border-accent pl-4 font-serif text-[1.2rem] italic leading-snug text-ink/90 [animation-delay:460ms] sm:mt-7 sm:pl-5 sm:text-2xl md:text-[1.75rem]">
               {profile.tagline}
             </blockquote>
-            <p className="mt-6 max-w-xl animate-fade-up leading-relaxed text-muted [animation-delay:540ms] md:text-lg">
+            <p className="mt-5 max-w-xl animate-fade-up text-[0.95rem] leading-relaxed text-muted [animation-delay:540ms] sm:mt-6 sm:text-base md:text-lg">
               {profile.bioShort}
             </p>
-            <div className="mt-9 flex animate-fade-up flex-col gap-3 [animation-delay:620ms] sm:flex-row sm:flex-wrap">
-              <Link href={href("/publications")} className="btn btn-primary px-6 py-3.5">
+            <div className="mt-7 flex animate-fade-up flex-col gap-2.5 [animation-delay:620ms] sm:mt-9 sm:flex-row sm:flex-wrap sm:gap-3">
+              <Link href={href("/publications")} className="btn btn-primary px-5 py-3 sm:px-6 sm:py-3.5">
                 {t.home.discover} <ArrowRight className="size-4" aria-hidden />
               </Link>
-              <Link href={href("/a-propos")} className="btn btn-outline px-6 py-3.5">
+              <Link href={href("/a-propos")} className="btn btn-outline px-5 py-3 sm:px-6 sm:py-3.5">
                 {t.home.myPath}
               </Link>
               {profile.cvUrl && (
-                <a href={profile.cvUrl} target="_blank" rel="noopener noreferrer" className="btn btn-ghost px-4 py-3.5">
+                <a href={profile.cvUrl} target="_blank" rel="noopener noreferrer" className="btn btn-ghost px-4 py-3 sm:py-3.5">
                   <FileDown className="size-4" aria-hidden /> {t.home.downloadCv}
                 </a>
               )}
             </div>
-            <SocialLinks socials={profile.socials} email={profile.email} className="mt-9 animate-fade-up [animation-delay:700ms]" />
+            <SocialLinks socials={profile.socials} email={profile.email} className="mt-7 animate-fade-up [animation-delay:700ms] sm:mt-9" />
           </div>
 
-          <div className="relative mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none">
+          <div className="relative mx-auto w-full max-w-[20rem] sm:max-w-md lg:col-span-5 lg:max-w-none">
             <div aria-hidden className="absolute -inset-3 translate-x-4 translate-y-4 animate-fade-in rounded-[1.75rem] border border-accent/40 [animation-delay:900ms]" />
             <div className="relative aspect-[4/5] animate-clip-up overflow-hidden rounded-3xl bg-navy shadow-2xl shadow-navy/25 [animation-delay:200ms]">
               {profile.photo || profile.heroImage ? (
@@ -139,18 +139,18 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 <div
                   key={s.label}
                   className={[
-                    "group relative flex flex-col px-5 py-8 sm:px-8 md:py-10",
+                    "group relative flex flex-col px-4 py-6 sm:px-8 sm:py-8 md:py-10",
                     i % 2 === 0 ? "border-r border-white/10" : "",
                     i < 2 ? "border-b border-white/10 lg:border-b-0" : "",
                     i === 1 ? "lg:border-r" : "",
                     i === 3 ? "lg:border-r-0" : "",
                   ].join(" ")}
                 >
-                  <dt className="order-2 mt-3 text-sm leading-snug text-white/65">{s.label}</dt>
-                  <dd className="order-1 font-serif text-[2.5rem] font-semibold leading-none text-white sm:text-5xl lg:text-[3.4rem]">
+                  <dt className="order-2 mt-2 text-xs leading-snug text-white/65 sm:mt-3 sm:text-sm">{s.label}</dt>
+                  <dd className="order-1 font-serif text-[2rem] font-semibold leading-none text-white sm:text-5xl lg:text-[3.4rem]">
                     <CountUp value={s.value} lang={lang} />
                   </dd>
-                  <span aria-hidden className="order-3 mt-5 block h-px w-10 origin-left bg-accent transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-20" />
+                  <span aria-hidden className="order-3 mt-4 block h-px w-10 sm:mt-5 origin-left bg-accent transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-20" />
                 </div>
               ))}
             </dl>
@@ -159,7 +159,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
       )}
 
       {/* ================= Expertise ================= */}
-      <section className="container-page py-20 md:py-28">
+      <section className="container-page py-14 sm:py-20 md:py-28">
         <Reveal>
           <SectionHeading
             eyebrow={t.home.expertiseEyebrow}
@@ -169,20 +169,20 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
             linkLabel={t.home.expertiseLink}
           />
         </Reveal>
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
           {profile.expertise.map((e, i) => {
             const Icon = EXPERTISE_ICONS[i % EXPERTISE_ICONS.length];
             return (
               <Reveal key={e.title} delay={i * 100} className="h-full">
-                <div className="card hover-lift group relative h-full overflow-hidden p-6">
-                  <span aria-hidden className="absolute right-5 top-4 font-serif text-5xl font-semibold text-line transition-colors duration-500 group-hover:text-accent-soft">
+                <div className="card hover-lift group relative h-full overflow-hidden p-5 sm:p-6">
+                  <span aria-hidden className="absolute right-4 top-3 font-serif text-4xl font-semibold text-line transition-colors duration-500 group-hover:text-accent-soft sm:right-5 sm:top-4 sm:text-5xl">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="relative grid size-11 place-items-center rounded-xl bg-accent-soft text-accent-dark transition-colors duration-500 group-hover:bg-primary group-hover:text-primary-fg">
+                  <span className="relative grid size-10 place-items-center rounded-xl bg-accent-soft sm:size-11 text-accent-dark transition-colors duration-500 group-hover:bg-primary group-hover:text-primary-fg">
                     <Icon className="size-5" aria-hidden />
                   </span>
-                  <h3 className="relative mt-6 text-xl font-semibold text-ink">{e.title}</h3>
-                  <p className="relative mt-2 text-[0.95rem] leading-relaxed text-muted">{e.description}</p>
+                  <h3 className="relative mt-4 text-lg font-semibold text-ink sm:mt-6 sm:text-xl">{e.title}</h3>
+                  <p className="relative mt-1.5 text-sm leading-relaxed text-muted sm:mt-2 sm:text-[0.95rem]">{e.description}</p>
                 </div>
               </Reveal>
             );
@@ -192,7 +192,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
 
       {/* ================= Articles ================= */}
       {leadArticle && (
-        <section className="border-y border-line bg-surface py-20 md:py-28">
+        <section className="border-y border-line bg-surface py-14 sm:py-20 md:py-28">
           <div className="container-page">
             <Reveal>
               <SectionHeading
@@ -216,7 +216,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
 
       {/* ================= Publications ================= */}
       {featuredPubs.length > 0 && (
-        <section className="container-page py-20 md:py-28">
+        <section className="container-page py-14 sm:py-20 md:py-28">
           <Reveal>
             <SectionHeading eyebrow={t.home.pubsEyebrow} title={t.home.pubsTitle} href={href("/publications")} linkLabel={t.home.pubsLink} />
           </Reveal>
@@ -232,7 +232,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
 
       {/* ================= Agenda ================= */}
       {events.length > 0 && (
-        <section className="container-page pb-20 md:pb-28">
+        <section className="container-page pb-14 sm:pb-20 md:pb-28">
           <Reveal>
             <SectionHeading
               eyebrow={t.home.agendaEyebrow}
@@ -253,16 +253,16 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
 
       {/* ================= Appel à l'action ================= */}
       <section className="container-page">
-        <Reveal variant="scale" className="relative isolate overflow-hidden rounded-[2rem] bg-navy px-6 py-16 text-center sm:px-12 md:py-24">
+        <Reveal variant="scale" className="relative isolate overflow-hidden rounded-3xl bg-navy px-5 py-12 text-center sm:rounded-[2rem] sm:px-12 sm:py-16 md:py-24">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={CTA_IMAGE} alt="" aria-hidden loading="lazy" className="absolute inset-0 -z-10 h-full w-full object-cover opacity-20" />
           <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-navy/70 to-navy-deep/95" />
           <p className="eyebrow justify-center text-accent before:hidden">{t.home.ctaEyebrow}</p>
-          <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-semibold text-white md:text-[2.6rem] md:leading-tight">
+          <h2 className="mx-auto mt-3 max-w-2xl text-[1.45rem] font-semibold leading-snug text-white sm:mt-4 sm:text-3xl md:text-[2.6rem] md:leading-tight">
             {t.home.ctaTitle}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/70">{t.home.ctaText}</p>
-          <Link href={href("/contact")} className="btn btn-accent mt-9 px-7 py-3.5">
+          <p className="mx-auto mt-3 max-w-xl text-sm text-white/70 sm:mt-4 sm:text-base">{t.home.ctaText}</p>
+          <Link href={href("/contact")} className="btn btn-accent mt-7 px-6 py-3 sm:mt-9 sm:px-7 sm:py-3.5">
             {t.home.ctaButton} <ArrowRight className="size-4" aria-hidden />
           </Link>
         </Reveal>

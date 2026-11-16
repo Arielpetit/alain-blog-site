@@ -102,10 +102,10 @@ export default async function ArticlePage({ params }: Props) {
                 <Clock className="size-3.5" aria-hidden /> {readingTime(article.content)} {t.common.minRead}
               </span>
             </div>
-            <h1 className="mt-5 animate-fade-up text-[2.3rem] font-semibold leading-[1.1] text-ink [animation-delay:80ms] md:text-[3.4rem]">
+            <h1 className="mt-4 animate-fade-up text-[1.7rem] font-semibold leading-[1.15] text-ink [animation-delay:80ms] sm:mt-5 sm:text-[2.3rem] md:text-[3.4rem]">
               {article.title}
             </h1>
-            <p className="mt-5 animate-fade-up text-lg leading-relaxed text-muted [animation-delay:160ms] md:text-xl">{article.excerpt}</p>
+            <p className="mt-4 animate-fade-up text-base leading-relaxed text-muted [animation-delay:160ms] sm:mt-5 sm:text-lg md:text-xl">{article.excerpt}</p>
             <div className="mt-8 flex animate-fade-up flex-col gap-5 [animation-delay:240ms] sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-3">
                 <Portrait name={profile.name} photo={profile.photo} avatar className="size-11 text-sm" />
@@ -194,7 +194,7 @@ export default async function ArticlePage({ params }: Props) {
           <div className="container-page">
             <Reveal>
               <p className="eyebrow">{t.home.articlesEyebrow}</p>
-              <h2 className="mt-3 text-3xl font-semibold text-ink md:text-4xl">{t.articles.related}</h2>
+              <h2 className="mt-2 text-2xl font-semibold text-ink sm:mt-3 sm:text-3xl md:text-4xl">{t.articles.related}</h2>
             </Reveal>
             <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
               {related.map((a, i) => (

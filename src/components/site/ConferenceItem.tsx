@@ -37,19 +37,19 @@ export function ConferenceItem({ conf, upcoming, lang }: { conf: Conference; upc
           <DateBlock date={conf.date} upcoming={upcoming} lang={lang} className="absolute bottom-3 left-4 shadow-lg sm:bottom-4 sm:left-6" />
         </div>
       )}
-      <div className="flex flex-1 gap-5 p-5 sm:p-6">
+      <div className="flex flex-1 gap-4 p-4 sm:gap-5 sm:p-6">
         {!conf.image && <DateBlock date={conf.date} upcoming={upcoming} lang={lang} className="self-start" />}
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <span className="badge">{conf.role}</span>
             {upcoming && <span className="badge badge-primary">{t.common.upcoming}</span>}
           </div>
-          <h3 className="mt-2.5 text-lg font-semibold leading-snug text-ink sm:text-xl">{conf.title}</h3>
+          <h3 className="mt-2 text-base font-semibold leading-snug text-ink sm:mt-2.5 sm:text-xl">{conf.title}</h3>
           <p className="mt-1 text-sm font-medium text-ink/75">{conf.event}</p>
           <p className="mt-1.5 inline-flex items-center gap-1.5 text-sm text-muted">
             <MapPin className="size-3.5" aria-hidden /> {conf.location}
           </p>
-          {conf.description && <p className="mt-3 text-[0.95rem] leading-relaxed text-muted">{conf.description}</p>}
+          {conf.description && <p className="mt-2.5 text-sm leading-relaxed text-muted sm:mt-3 sm:text-[0.95rem]">{conf.description}</p>}
           {(conf.link || conf.slidesUrl) && (
             <div className="mt-4 flex flex-wrap gap-2">
               {conf.link && (

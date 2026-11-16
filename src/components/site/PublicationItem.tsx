@@ -11,13 +11,13 @@ export function PublicationItem({ pub, lang, showAbstract = true }: { pub: Publi
   const href = localePath(lang, `/publications/${pub.id}`);
   const external = pub.link || pub.pdfUrl || null;
   return (
-    <article className="group relative -mx-4 grid grid-cols-1 gap-4 rounded-2xl px-4 py-8 transition-colors duration-300 hover:bg-surface sm:-mx-6 sm:grid-cols-[6rem_1fr] sm:gap-8 sm:px-6">
+    <article className="group relative -mx-4 grid grid-cols-1 gap-4 rounded-2xl px-4 py-6 transition-colors sm:py-8 duration-300 hover:bg-surface sm:-mx-6 sm:grid-cols-[6rem_1fr] sm:gap-8 sm:px-6">
       <div className="flex items-center gap-3 sm:block">
-        <p className="font-serif text-2xl font-semibold text-accent-dark transition-transform duration-500 group-hover:translate-x-1 sm:text-[2rem]">{pub.year}</p>
+        <p className="font-serif text-xl font-semibold text-accent-dark sm:text-2xl transition-transform duration-500 group-hover:translate-x-1 sm:text-[2rem]">{pub.year}</p>
         <p className="text-[0.7rem] font-medium uppercase tracking-[0.12em] text-muted sm:mt-1.5">{t.types[pub.type]}</p>
       </div>
       <div className="min-w-0">
-        <h3 className="text-xl font-semibold leading-snug text-ink transition-colors group-hover:text-accent-dark">
+        <h3 className="text-[1.05rem] font-semibold leading-snug text-ink transition-colors group-hover:text-accent-dark sm:text-xl">
           {external ? (
             <a href={external} target="_blank" rel="noopener noreferrer" className="after:absolute after:inset-0 after:rounded-2xl">
               {pub.title}

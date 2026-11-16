@@ -28,7 +28,7 @@ function Timeline({ items }: { items: TimelineItem[] }) {
         <Reveal as="li" key={i} delay={i * 90} className="group relative pb-10 pl-8 last:pb-0">
           <span aria-hidden className="absolute -left-[5px] top-1.5 size-[9px] rounded-full bg-accent ring-4 ring-paper transition-transform duration-500 group-hover:scale-150" />
           {it.period && <p className="text-sm font-medium text-accent-dark">{it.period}</p>}
-          <h3 className="mt-1 text-xl font-semibold text-ink">{it.title}</h3>
+          <h3 className="mt-1 text-lg font-semibold text-ink sm:text-xl">{it.title}</h3>
           {it.place && <p className="mt-0.5 text-sm text-muted">{it.place}</p>}
           {it.description && <p className="mt-2.5 leading-relaxed text-ink/80">{it.description}</p>}
         </Reveal>
@@ -39,9 +39,9 @@ function Timeline({ items }: { items: TimelineItem[] }) {
 
 function SectionTitle({ icon: Icon, children }: { icon?: typeof Award; children: React.ReactNode }) {
   return (
-    <h2 className="flex items-center gap-3 text-3xl font-semibold text-ink">
+    <h2 className="flex items-center gap-3 text-2xl font-semibold text-ink sm:text-3xl">
       {Icon && (
-        <span className="grid size-10 place-items-center rounded-xl bg-accent-soft text-accent-dark">
+        <span className="grid size-9 place-items-center rounded-xl bg-accent-soft text-accent-dark sm:size-10">
           <Icon className="size-5" aria-hidden />
         </span>
       )}
@@ -59,10 +59,10 @@ export default async function AboutPage({ params }: Props) {
     <>
       <PageHeader eyebrow={t.about.eyebrow} title={t.about.title} description={p.title} image={PAGE_IMAGES.about} />
 
-      <section className="container-page grid grid-cols-1 gap-12 py-16 md:py-24 lg:grid-cols-12 lg:gap-16">
+      <section className="container-page grid grid-cols-1 gap-10 py-10 sm:gap-12 sm:py-16 md:py-24 lg:grid-cols-12 lg:gap-16">
         <Reveal variant="left" className="lg:col-span-4">
           <div className="lg:sticky lg:top-28">
-            <Portrait name={p.name} photo={p.photo} className="aspect-[4/5] w-full max-w-sm shadow-xl shadow-navy/15" />
+            <Portrait name={p.name} photo={p.photo} className="aspect-[4/5] w-full max-w-[16rem] shadow-xl shadow-navy/15 sm:max-w-sm" />
             <div className="mt-6 space-y-3 text-sm">
               <p className="font-serif text-2xl font-semibold text-ink">{p.name}</p>
               <p className="text-muted">{p.institution}</p>
@@ -97,7 +97,7 @@ export default async function AboutPage({ params }: Props) {
           </Reveal>
 
           {p.expertise.length > 0 && (
-            <div className="mt-16">
+            <div className="mt-12 sm:mt-16">
               <Reveal><SectionTitle>{t.about.research}</SectionTitle></Reveal>
               <ul className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {p.expertise.map((e, i) => (
@@ -112,7 +112,7 @@ export default async function AboutPage({ params }: Props) {
             </div>
           )}
 
-          <div className="mt-16 grid grid-cols-1 gap-14 xl:grid-cols-2 xl:gap-10">
+          <div className="mt-12 grid grid-cols-1 gap-12 sm:mt-16 sm:gap-14 xl:grid-cols-2 xl:gap-10">
             {p.education.length > 0 && (
               <div>
                 <Reveal><SectionTitle icon={GraduationCap}>{t.about.education}</SectionTitle></Reveal>
@@ -128,7 +128,7 @@ export default async function AboutPage({ params }: Props) {
           </div>
 
           {p.distinctions.length > 0 && (
-            <div className="mt-16">
+            <div className="mt-12 sm:mt-16">
               <Reveal><SectionTitle icon={Award}>{t.about.distinctions}</SectionTitle></Reveal>
               <ul className="mt-8 divide-y divide-line border-y border-line">
                 {p.distinctions.map((d, i) => (

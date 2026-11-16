@@ -15,11 +15,11 @@ export function SectionHeading({
   linkLabel?: string;
 }) {
   return (
-    <div className="mb-10 flex flex-col gap-4 md:mb-12 md:flex-row md:items-end md:justify-between">
+    <div className="mb-7 flex flex-col gap-3 sm:mb-10 sm:gap-4 md:mb-12 md:flex-row md:items-end md:justify-between">
       <div className="max-w-2xl">
         <p className="eyebrow">{eyebrow}</p>
-        <h2 className="mt-3 text-3xl font-semibold text-ink md:text-4xl">{title}</h2>
-        {description && <p className="mt-3 text-muted">{description}</p>}
+        <h2 className="mt-2 text-2xl font-semibold text-ink sm:mt-3 sm:text-3xl md:text-4xl">{title}</h2>
+        {description && <p className="mt-2 text-sm text-muted sm:mt-3 sm:text-base">{description}</p>}
       </div>
       {href && (
         <Link href={href} className="group inline-flex shrink-0 items-center gap-2 text-sm font-medium text-ink">

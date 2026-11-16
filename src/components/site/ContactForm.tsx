@@ -32,7 +32,7 @@ function Form({ t, defaultSubject, onReset }: { t: ReturnType<typeof getDictiona
   const req = <span className="text-danger">*</span>;
 
   return (
-    <form action={action} className="card space-y-5 p-6 md:p-8">
+    <form action={action} className="card space-y-4 p-5 sm:space-y-5 sm:p-6 md:p-8">
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="field-label">{t.name} {req}</label>
@@ -56,7 +56,7 @@ function Form({ t, defaultSubject, onReset }: { t: ReturnType<typeof getDictiona
       </div>
       <div>
         <label htmlFor="message" className="field-label">{t.message} {req}</label>
-        <textarea id="message" name="message" required minLength={10} maxLength={5000} rows={7} defaultValue={f.message} className="field resize-y" />
+        <textarea id="message" name="message" required minLength={10} maxLength={5000} rows={6} defaultValue={f.message} className="field resize-y" />
       </div>
       {/* Piège anti-spam */}
       <div aria-hidden className="absolute -left-[9999px] h-0 overflow-hidden">

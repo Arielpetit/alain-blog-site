@@ -10,13 +10,13 @@ import { SocialLinks } from "./SocialLinks";
 export function Footer({ profile, lang, t }: { profile: Profile; lang: Locale; t: Dictionary }) {
   const year = new Date().getFullYear();
   return (
-    <footer className="relative mt-28 overflow-hidden bg-navy-deep text-white/75">
+    <footer className="relative mt-16 overflow-hidden bg-navy-deep text-white/75 sm:mt-28">
       <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 size-96 rounded-full bg-accent/10 blur-3xl" />
-      <div className="container-page relative grid grid-cols-1 gap-12 py-16 md:grid-cols-12 md:py-20">
+      <div className="container-page relative grid grid-cols-1 gap-10 py-12 sm:gap-12 sm:py-16 md:grid-cols-12 md:py-20">
         <div className="md:col-span-5">
-          <div className="flex items-center gap-4"><LogoMark className="size-14" /><p className="font-serif text-2xl leading-tight text-white md:text-[1.7rem]">{profile.name}</p></div>
+          <div className="flex items-center gap-4"><LogoMark className="size-11 sm:size-14" /><p className="font-serif text-xl leading-tight text-white sm:text-2xl md:text-[1.7rem]">{profile.name}</p></div>
           <p className="mt-1.5 text-sm text-white/55">{profile.title}</p>
-          <p className="mt-6 max-w-sm font-serif text-lg italic leading-relaxed text-white/80">« {profile.tagline} »</p>
+          <p className="mt-5 max-w-sm font-serif text-base italic leading-relaxed text-white/80 sm:mt-6 sm:text-lg">« {profile.tagline} »</p>
           <SocialLinks socials={profile.socials} email={profile.email} className="mt-7" variant="dark" />
         </div>
 

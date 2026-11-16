@@ -12,7 +12,7 @@ function textOf(node: React.ReactNode): string {
 /** Rendu Markdown sûr (le HTML brut est ignoré). Les titres reçoivent une ancre. */
 export function Markdown({ children, className, lang }: { children: string; className?: string; lang?: string }) {
   return (
-    <div lang={lang} className={cn("prose prose-lg prose-article max-w-none", className)}>
+    <div lang={lang} className={cn("prose prose-base prose-article max-w-none sm:prose-lg", className)}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
