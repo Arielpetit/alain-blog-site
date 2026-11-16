@@ -19,7 +19,7 @@ const tl = (items: TimelineItem[] = []) =>
 
 const NAV = [
   { id: "presentation", label: "Présentation" },
-  { id: "images", label: "Images & CV" },
+  { id: "images", label: "Images" },
   { id: "coordonnees", label: "Coordonnées" },
   { id: "reseaux", label: "Réseaux" },
   { id: "parcours", label: "Parcours" },
@@ -98,11 +98,10 @@ export default async function AdminProfile() {
           <LangTabs enFilled={enFilled} fr={<TextFields p={p} prefix="" />} en={<TextFields p={en} prefix="en_" />} />
         </Section>
 
-        <Section id="images" title="Images et CV">
-          <div className="grid gap-6 md:grid-cols-3">
+        <Section id="images" title="Images">
+          <div className="grid gap-6 md:grid-cols-2">
             <FileField label="Photo professionnelle" fileName="photoFile" removeName="removePhoto" current={p.photo} accept="image/*" allowUrl={false} image hint="Affichée en grand sur l'accueil, sur la page Parcours et en signature des articles. Format portrait (4:5)." />
             <FileField label="Image d'accueil" fileName="heroFile" urlName="heroImage" removeName="removeHero" current={p.heroImage} accept="image/*" image hint="Grande image de l'accueil, utilisée seulement tant qu'aucune photo professionnelle n'est ajoutée." />
-            <FileField label="CV (PDF)" fileName="cvFile" removeName="removeCv" current={p.cvUrl} accept=".pdf,application/pdf" allowUrl={false} hint="Ajoute un bouton « Télécharger le CV » sur l'accueil et la page Parcours." />
           </div>
         </Section>
 

@@ -46,7 +46,6 @@ const fr = {
   home: {
     discover: "Découvrir mes travaux",
     myPath: "Mon parcours",
-    downloadCv: "Télécharger le CV",
     featuredPub: "Publication à la une",
     keyFigures: "Chiffres clés",
     expertiseEyebrow: "Domaines d'expertise",
@@ -283,7 +282,6 @@ const en: Dictionary = {
   home: {
     discover: "Explore my work",
     myPath: "About me",
-    downloadCv: "Download CV",
     featuredPub: "Featured publication",
     keyFigures: "Key figures",
     expertiseEyebrow: "Areas of expertise",

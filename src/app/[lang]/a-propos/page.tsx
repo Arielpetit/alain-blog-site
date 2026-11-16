@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Award, Briefcase, FileDown, GraduationCap, Mail, MapPin } from "lucide-react";
+import { Award, Briefcase, GraduationCap, Mail, MapPin } from "lucide-react";
 import { getProfile } from "@/lib/db";
 import type { TimelineItem } from "@/lib/types";
 import { PAGE_IMAGES, PageHeader } from "@/components/site/PageHeader";
@@ -79,11 +79,6 @@ export default async function AboutPage({ params }: Props) {
               )}
             </div>
             <div className="mt-6 flex flex-wrap gap-2">
-              {p.cvUrl && (
-                <a href={p.cvUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                  <FileDown className="size-4" aria-hidden /> {t.home.downloadCv}
-                </a>
-              )}
               <Link href={localePath(lang, "/contact")} className="btn btn-outline">{t.about.contactMe}</Link>
             </div>
             <SocialLinks socials={p.socials} email={p.email} className="mt-6" />

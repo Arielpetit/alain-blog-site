@@ -1,6 +1,6 @@
 import { shortName } from "@/lib/utils";
 import Link from "next/link";
-import { ArrowRight, BookOpen, FileDown, Landmark, Scale, ShieldCheck } from "lucide-react";
+import { ArrowRight, BookOpen, Landmark, Scale, ShieldCheck } from "lucide-react";
 import { getArticles, getConferences, getProfile, getPublications } from "@/lib/db";
 import { Portrait } from "@/components/site/Portrait";
 import { SectionHeading } from "@/components/site/SectionHeading";
@@ -77,11 +77,6 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               <Link href={href("/a-propos")} className="btn btn-outline px-5 py-3 sm:px-6 sm:py-3.5">
                 {t.home.myPath}
               </Link>
-              {profile.cvUrl && (
-                <a href={profile.cvUrl} target="_blank" rel="noopener noreferrer" className="btn btn-ghost px-4 py-3 sm:py-3.5">
-                  <FileDown className="size-4" aria-hidden /> {t.home.downloadCv}
-                </a>
-              )}
             </div>
             <SocialLinks socials={profile.socials} email={profile.email} className="mt-7 animate-fade-up [animation-delay:700ms] sm:mt-9" />
           </div>

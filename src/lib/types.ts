@@ -38,7 +38,6 @@ export type Profile = {
   email: string;
   phone: string;
   address: string;
-  cvUrl: string;
   socials: Socials;
   stats: Stat[];
   expertise: Expertise[];

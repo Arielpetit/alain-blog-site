@@ -271,7 +271,6 @@ export async function saveProfile(form: FormData) {
     email: str(form, "email"),
     phone: str(form, "phone"),
     address: str(form, "address"),
-    cvUrl: await media(form, { file: "cvFile", remove: "removeCv", current: current.cvUrl, folder: "profil" }),
     socials: Object.fromEntries(SOCIAL_KEYS.map((k) => [k, str(form, k)])) as Profile["socials"],
     stats: lines(str(form, "stats")).map(([value = "", label = ""]) => ({ value, label })),
     expertise: lines(str(form, "expertise")).map(([title = "", ...d]) => ({ title, description: d.join(" | ") })),
