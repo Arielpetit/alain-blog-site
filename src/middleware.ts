@@ -25,7 +25,10 @@ export async function middleware(req: NextRequest) {
         },
       },
     });
-    const { data } = await supabase.auth.getUser();
+    // Vérification locale du JWT (rafraîchit la session si nécessaire).
+    const { data: claimsData } = await supabase.auth.getClaims();
+    const claims = claimsData?.claims;
+    const data = { user: claims?.sub ? { email: typeof claims.email === "string" ? claims.email : undefined } : null };
 
     if (PUBLIC_ADMIN.some((p) => pathname.startsWith(p))) return res;
     if (!data.user || !isAllowedAdmin(data.user.email)) {

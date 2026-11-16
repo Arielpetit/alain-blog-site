@@ -1,5 +1,5 @@
 import { KeyRound, Palette, ShieldCheck } from "lucide-react";
-import { requireAdmin } from "@/lib/auth";
+import { getAdminAccount } from "@/lib/auth";
 import { formatDate } from "@/lib/utils";
 import { AdminHeader, Section } from "@/components/admin/ui";
 import { PasswordForm } from "@/components/admin/PasswordForm";
@@ -8,7 +8,8 @@ import { ThemeToggle } from "@/components/shared/ThemeToggle";
 export const metadata = { title: "Mon compte" };
 
 export default async function AccountPage({ searchParams }: { searchParams: Promise<{ reinit?: string }> }) {
-  const [user, { reinit }] = await Promise.all([requireAdmin(), searchParams]);
+  const [account, { reinit }] = await Promise.all([getAdminAccount(), searchParams]);
+  const user = { email: account?.email ?? "", last_sign_in_at: account?.last_sign_in_at };
   return (
     <>
       <AdminHeader title="Mon compte" description="Connexion, sécurité et préférences." />
