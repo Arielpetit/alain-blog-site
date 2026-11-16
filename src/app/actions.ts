@@ -1,7 +1,8 @@
 "use server";
 
 import { headers } from "next/headers";
-import { addMessage } from "@/lib/db";
+import { getProfile } from "@/lib/db";
+import { sendContactEmail } from "@/lib/mail";
 
 export type ContactError = "required" | "email" | "short" | "long" | "rate" | "server";
 export type ContactState = { ok: boolean; error?: ContactError; fields?: Record<string, string> };
@@ -32,7 +33,8 @@ export async function sendContact(_prev: ContactState, form: FormData): Promise<
   if (now - (lastSubmit.get(ip) ?? 0) < 30_000) return { ok: false, error: "rate", fields };
 
   try {
-    await addMessage(fields);
+    const profile = await getProfile();
+    await sendContactEmail(profile.email, fields);
   } catch (e) {
     console.error(e);
     return { ok: false, error: "server", fields };

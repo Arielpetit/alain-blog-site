@@ -94,7 +94,7 @@ export default async function ContactPage({ params, searchParams }: Props) {
             <h2 className="text-2xl font-semibold text-ink sm:text-3xl">{t.formTitle}</h2>
             <p className="mt-1.5 text-sm text-muted">{t.formText}</p>
           </div>
-          <ContactForm key={objet ?? ""} defaultSubject={objet} lang={lang} />
+          <ContactForm key={objet ?? ""} defaultSubject={objet} lang={lang} fallbackEmail={p.email} />
         </Reveal>
 
         <Reveal variant="right" delay={120} className="space-y-6 lg:col-span-5">

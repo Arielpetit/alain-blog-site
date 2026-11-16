@@ -221,23 +221,6 @@ export async function removeConference(form: FormData) {
 }
 
 /* =====================================================================
-   Messages
-   ===================================================================== */
-
-export async function toggleMessageRead(form: FormData) {
-  await requireAdmin();
-  await db.setMessageRead(str(form, "id"), form.get("read") === "true");
-  revalidatePath("/admin", "layout");
-}
-
-export async function removeMessage(form: FormData) {
-  await requireAdmin();
-  await db.deleteMessage(str(form, "id"));
-  revalidatePath("/admin", "layout");
-  redirect("/admin/messages?ok=supprime");
-}
-
-/* =====================================================================
    Profil
    ===================================================================== */
 

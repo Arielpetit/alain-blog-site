@@ -8,7 +8,6 @@ import {
   CalendarDays,
   ExternalLink,
   FileText,
-  Inbox,
   KeyRound,
   LayoutDashboard,
   Library,
@@ -34,10 +33,6 @@ const GROUPS = [
     ],
   },
   {
-    label: "Relations",
-    items: [{ href: "/admin/messages", label: "Messages", icon: Inbox }],
-  },
-  {
     label: "Paramètres",
     items: [
       { href: "/admin/profil", label: "Profil & parcours", icon: UserRound },
@@ -52,13 +47,11 @@ export function AdminShell({
   children,
   name,
   email,
-  unread,
   logout,
 }: {
   children: React.ReactNode;
   name: string;
   email: string;
-  unread: number;
   logout: () => Promise<void>;
 }) {
   const pathname = usePathname();
@@ -108,11 +101,6 @@ export function AdminShell({
                     {active(href) && <span aria-hidden className="absolute inset-y-2 left-0 w-0.5 rounded-full bg-accent" />}
                     <Icon className="size-4 shrink-0" aria-hidden />
                     <span className="flex-1">{label}</span>
-                    {href === "/admin/messages" && unread > 0 && (
-                      <span className="min-w-5 rounded-full bg-accent px-1.5 py-0.5 text-center text-[0.68rem] font-semibold leading-none text-white">
-                        {unread}
-                      </span>
-                    )}
                   </Link>
                 </li>
               ))}

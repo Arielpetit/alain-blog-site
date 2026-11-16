@@ -216,7 +216,7 @@ const fr = {
       short: "Votre message est un peu court.",
       long: "Un des champs dépasse la longueur autorisée.",
       rate: "Veuillez patienter quelques secondes avant un nouvel envoi.",
-      server: "Une erreur est survenue. Réessayez dans un instant.",
+      server: "L'envoi n'a pas abouti. Réessayez dans un instant ou écrivez directement à",
     },
   },
   footer: {
@@ -453,7 +453,7 @@ const en: Dictionary = {
       short: "Your message is a little short.",
       long: "One of the fields is too long.",
       rate: "Please wait a few seconds before sending again.",
-      server: "Something went wrong. Please try again shortly.",
+      server: "The message could not be sent. Please try again shortly or write directly to",
     },
   },
   footer: {

@@ -6,13 +6,13 @@ import { sendContact, type ContactState } from "@/app/actions";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 
-export function ContactForm({ defaultSubject = "", lang }: { defaultSubject?: string; lang: Locale }) {
+export function ContactForm({ defaultSubject = "", lang, fallbackEmail = "" }: { defaultSubject?: string; lang: Locale; fallbackEmail?: string }) {
   const t = getDictionary(lang).contact;
   const [key, setKey] = useState(0);
-  return <Form key={key} t={t} defaultSubject={defaultSubject} onReset={() => setKey((k) => k + 1)} />;
+  return <Form key={key} t={t} defaultSubject={defaultSubject} fallbackEmail={fallbackEmail} onReset={() => setKey((k) => k + 1)} />;
 }
 
-function Form({ t, defaultSubject, onReset }: { t: ReturnType<typeof getDictionary>["contact"]; defaultSubject: string; onReset: () => void }) {
+function Form({ t, defaultSubject, fallbackEmail, onReset }: { t: ReturnType<typeof getDictionary>["contact"]; defaultSubject: string; fallbackEmail: string; onReset: () => void }) {
   const [state, action, pending] = useActionState<ContactState, FormData>(sendContact, { ok: false });
 
   if (state.ok)
@@ -64,7 +64,15 @@ function Form({ t, defaultSubject, onReset }: { t: ReturnType<typeof getDictiona
       </div>
 
       {state.error && (
-        <p role="alert" className="animate-fade-up rounded-lg bg-danger-soft px-4 py-3 text-sm text-danger">{t.errors[state.error]}</p>
+        <p role="alert" className="animate-fade-up rounded-lg bg-danger-soft px-4 py-3 text-sm text-danger">
+          {t.errors[state.error]}
+          {state.error === "server" && fallbackEmail && (
+            <>
+              {" "}
+              <a href={`mailto:${fallbackEmail}`} className="font-semibold underline">{fallbackEmail}</a>
+            </>
+          )}
+        </p>
       )}
 
       <div className="flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between">

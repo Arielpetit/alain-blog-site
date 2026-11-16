@@ -75,11 +75,14 @@ export function RichTextEditor({
   const words = value.trim() ? value.replace(/[#>*_\-[\]()`]/g, " ").trim().split(/\s+/).length : 0;
 
   return (
-    <div className="overflow-hidden rounded-xl border border-line-strong bg-surface focus-within:border-accent focus-within:shadow-[0_0_0_3px_color-mix(in_srgb,var(--accent)_20%,transparent)]">
+    <div className="overflow-clip rounded-xl border border-line-strong bg-surface focus-within:border-accent focus-within:shadow-[0_0_0_3px_color-mix(in_srgb,var(--accent)_20%,transparent)]">
       <input type="hidden" name={name} value={value} />
       <Toolbar editor={editor} />
       {editor ? (
-        <EditorContent editor={editor} />
+        // Cliquer n'importe où dans la zone place le curseur dans le texte.
+        <div className="cursor-text" style={{ minHeight }} onClick={(e) => e.target === e.currentTarget && editor.commands.focus("end")}>
+          <EditorContent editor={editor} className="[&_.tiptap]:outline-none" />
+        </div>
       ) : (
         <div className="animate-pulse bg-surface-2/50" style={{ minHeight }} />
       )}

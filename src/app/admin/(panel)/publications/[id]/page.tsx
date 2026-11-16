@@ -82,7 +82,7 @@ export default async function EditPublication({ params }: { params: Promise<{ id
             <Toggle name="featured" defaultChecked={p.featured} label="Publication à la une" hint="Affichée sur la page d'accueil" />
           </Section>
           <Section title="Documents">
-            <FileField label="Document PDF" fileName="pdfFile" urlName="pdfUrl" removeName="removePdf" current={p.pdfUrl} accept=".pdf,application/pdf" hint="PDF, 15 Mo maximum" />
+            <FileField label="Document PDF" fileName="pdfFile" urlName="pdfUrl" removeName="removePdf" current={p.pdfUrl} accept=".pdf,application/pdf" hint="Bouton « Lire l'article » sur le site. PDF, 15 Mo maximum." />
             <Field label="Lien externe" htmlFor="link" hint="Éditeur, DOI, HAL…">
               <input id="link" name="link" type="url" defaultValue={p.link} className="field" placeholder="https://" />
             </Field>

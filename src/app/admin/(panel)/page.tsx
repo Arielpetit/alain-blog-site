@@ -1,22 +1,21 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, CalendarDays, FileText, Inbox, Languages, Library, PenLine, Plus, UserRound } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CalendarDays, FileText, Languages, Library, Mail, NotebookPen, PenLine, Plus, UserRound } from "lucide-react";
 import { requireAdmin } from "@/lib/auth";
-import { getArticles, getConferences, getMessages, getProfile, getPublications } from "@/lib/db";
+import { getArticles, getConferences, getProfile, getPublications } from "@/lib/db";
 import { formatDate } from "@/lib/utils";
 import { StatusBadge } from "@/components/admin/ui";
 
 export default async function Dashboard() {
-  const [, profile, articles, publications, conferences, messages] = await Promise.all([
+  const [, profile, articles, publications, conferences] = await Promise.all([
     requireAdmin(),
     getProfile(),
     getArticles({ includeDrafts: true }),
     getPublications(),
     getConferences(),
-    getMessages(),
   ]);
   const today = new Date().toISOString().slice(0, 10);
   const published = articles.filter((a) => a.published).length;
-  const unread = messages.filter((m) => !m.read);
+  const drafts = articles.length - published;
   const upcoming = conferences.filter((c) => c.date >= today).reverse();
   const missingEn =
     articles.filter((a) => a.published && !a.i18n?.en?.content?.trim()).length +
@@ -29,7 +28,7 @@ export default async function Dashboard() {
     { label: "Articles publiés", value: published, sub: `${articles.length - published} brouillon(s)`, icon: FileText, href: "/admin/articles" },
     { label: "Publications", value: publications.length, sub: `${publications.filter((p) => p.pdfUrl).length} avec PDF`, icon: Library, href: "/admin/publications" },
     { label: "Conférences à venir", value: upcoming.length, sub: `${conferences.length} au total`, icon: CalendarDays, href: "/admin/conferences" },
-    { label: "Messages non lus", value: unread.length, sub: `${messages.length} reçu(s)`, icon: Inbox, href: "/admin/messages", highlight: unread.length > 0 },
+    { label: "Brouillons", value: drafts, sub: "articles non publiés", icon: NotebookPen, href: "/admin/articles", highlight: drafts > 0 },
   ];
 
   return (
@@ -80,34 +79,32 @@ export default async function Dashboard() {
       <div className="mt-6 grid gap-6 lg:grid-cols-5">
         <section className="card overflow-hidden lg:col-span-3">
           <div className="flex items-center justify-between border-b border-line px-5 py-4">
-            <h2 className="font-serif text-lg font-semibold text-ink">Derniers messages</h2>
-            <Link href="/admin/messages" className="inline-flex items-center gap-1 text-sm font-medium text-accent-dark hover:underline">
-              Boîte de réception <ArrowRight className="size-3.5" aria-hidden />
+            <h2 className="font-serif text-lg font-semibold text-ink">Publications</h2>
+            <Link href="/admin/publications" className="inline-flex items-center gap-1 text-sm font-medium text-accent-dark hover:underline">
+              Tout voir <ArrowRight className="size-3.5" aria-hidden />
             </Link>
           </div>
-          {messages.length ? (
+          {publications.length ? (
             <ul className="divide-y divide-line">
-              {messages.slice(0, 5).map((m) => (
-                <li key={m.id}>
-                  <Link href={`/admin/messages#${m.id}`} className="flex items-start gap-3 px-5 py-3.5 transition-colors hover:bg-surface-2/60">
-                    <span className="grid size-9 shrink-0 place-items-center rounded-full bg-surface-2 text-xs font-semibold text-ink">
-                      {m.name.slice(0, 1).toUpperCase()}
-                    </span>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-baseline justify-between gap-3">
-                        <p className={`truncate text-sm text-ink ${m.read ? "" : "font-semibold"}`}>{m.name}</p>
-                        <time className="shrink-0 text-xs text-muted">{formatDate(m.date, { day: "numeric", month: "short" })}</time>
-                      </div>
-                      <p className="truncate text-sm text-muted">{m.subject}</p>
-                    </div>
-                    {!m.read && <span className="mt-2 size-2 shrink-0 rounded-full bg-accent" aria-label="Non lu" />}
+              {publications.slice(0, 5).map((p) => (
+                <li key={p.id}>
+                  <Link href={`/admin/publications/${p.id}`} className="flex items-start gap-3 px-5 py-3.5 transition-colors hover:bg-surface-2/60">
+                    <span className="w-11 shrink-0 font-serif text-lg font-semibold text-accent-dark">{p.year}</span>
+                    <p className="line-clamp-2 min-w-0 flex-1 text-sm text-ink">{p.title}</p>
                   </Link>
                 </li>
               ))}
             </ul>
           ) : (
-            <p className="px-5 py-10 text-center text-sm text-muted">Aucun message pour le moment.</p>
+            <p className="px-5 py-10 text-center text-sm text-muted">Aucune publication pour le moment.</p>
           )}
+          <div className="flex items-start gap-3 border-t border-line bg-surface-2/60 px-5 py-4 text-sm">
+            <Mail className="mt-0.5 size-4 shrink-0 text-accent-dark" aria-hidden />
+            <p className="text-muted">
+              Les messages du formulaire de contact arrivent directement par e-mail à{" "}
+              <span className="font-medium text-ink">{profile.email || "— (renseignez votre e-mail dans le profil)"}</span>.
+            </p>
+          </div>
         </section>
 
         <div className="space-y-6 lg:col-span-2">

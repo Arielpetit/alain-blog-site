@@ -69,7 +69,7 @@ export default async function EditArticle({ params }: { params: Promise<{ id: st
             </Field>
           </Section>
           <Section title="Couverture">
-            <FileField label="Image" fileName="coverFile" urlName="cover" removeName="removeCover" current={a.cover} accept="image/*" image hint="Paysage, 1600 × 900 recommandé" />
+            <FileField label="Image" fileName="coverFile" urlName="cover" removeName="removeCover" current={a.cover} accept="image/*" image hint="Vignette dans la liste des articles et grande image en haut de l'article. Format paysage." />
           </Section>
         </div>
       </div>

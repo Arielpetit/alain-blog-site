@@ -89,7 +89,7 @@ export default async function EditConference({ params }: { params: Promise<{ id:
         </div>
         <div className="space-y-6">
           <Section title="Médias">
-            <FileField label="Photo de l'événement" fileName="imageFile" urlName="image" removeName="removeImage" current={c.image} accept="image/*" image hint="Paysage recommandé" />
+            <FileField label="Photo de l'événement" fileName="imageFile" urlName="image" removeName="removeImage" current={c.image} accept="image/*" image hint="Image de la carte sur la page Conférences et sur l'accueil. Format paysage." />
             <FileField label="Support de présentation" fileName="slidesFile" urlName="slidesUrl" removeName="removeSlides" current={c.slidesUrl} accept=".pdf,.pptx" hint="PDF ou PowerPoint, 15 Mo max." />
           </Section>
         </div>
