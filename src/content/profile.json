@@ -1,12 +1,12 @@
 {
   "name": "Dr Alain Bienvenu Gnassoussoumari",
-  "title": "Docteur (Ph.D) en droit · Expert en finances publiques (PSSFP)",
+  "title": "Docteur (Ph.D) en droit public · Expert en finances publiques",
   "tagline": "Contrôler, évaluer, rendre compte : au cœur de la gouvernance financière publique.",
-  "bioShort": "Docteur (Ph.D) en droit et expert en finances publiques, rattaché à l'Université de Dschang (Cameroun). Ses travaux portent sur la gouvernance financière publique, le contentieux financier public et le contrôle des biens publics au Cameroun.",
-  "bioLong": "Docteur (Ph.D) en droit et expert en finances publiques formé au **PSSFP** (Programme supérieur de spécialisation en finances publiques), Alain Bienvenu **Gnassoussoumari** est rattaché à l'**Université de Dschang** (Cameroun), où il a mené ses recherches doctorales en droit public.\n\nSes recherches portent sur la **nouvelle gouvernance financière publique** au Cameroun : le passage d'une logique de moyens à une logique de résultats, la place du **contrôle administratif des biens publics**, l'effectivité des réformes issues de la loi de 2018 portant régime financier de l'État, ainsi que la **justice financière** et la responsabilité des gestionnaires de crédits publics.\n\nDans « Les limites des réformes du contentieux financier public au Cameroun » (*IMJST*, juillet 2024), il analyse les limites organiques et substantielles du contentieux financier camerounais. Dans son article « L'incidence de la revalorisation du contrôle administratif des biens publics dans la nouvelle gouvernance financière publique camerounaise » (*International Multilingual Journal of Science and Technology*, avril 2026), il montre que cette revalorisation améliore la prévisibilité financière, tout en soulignant les limites qui en réduisent la portée : la lisibilité du circuit de contrôle et la qualité du régime de sanction.\n\nCe site rassemble ses publications, ses analyses et ses coordonnées.",
+  "bioShort": "Docteur (Ph.D) en droit public de l'Université de Dschang et expert en finances publiques, en poste à la Mairie de Bangangté (Cameroun). Ses travaux portent sur la gouvernance financière publique, le contentieux financier public et le contrôle des biens publics.",
+  "bioLong": "Docteur (Ph.D) en droit public de l'**Université de Dschang** et expert en finances publiques, Alain Bienvenu **Gnassoussoumari** exerce actuellement à la **Mairie de Bangangté** (Cameroun).\n\nSon parcours allie formation juridique et spécialisation financière : licence et master I en droit public à l'Université de Yaoundé II, master II en droit public (option finances publiques) à l'Université de Douala, master II professionnel en audit et contrôle des finances publiques au **PSSFP** (ministère des Finances), ainsi qu'un diplôme en comptabilité-matières obtenu au CFCM.\n\nSes recherches portent sur la **nouvelle gouvernance financière publique** au Cameroun : le passage d'une logique de moyens à une logique de résultats, la place du **contrôle administratif des biens publics**, l'effectivité des réformes issues de la loi de 2018 portant régime financier de l'État, ainsi que la **justice financière** et la responsabilité des gestionnaires de crédits publics.\n\nCe site rassemble ses publications, ses analyses et ses coordonnées.",
   "photo": "",
   "heroImage": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1400&q=80&auto=format&fit=crop",
-  "institution": "Université de Dschang (Cameroun)",
+  "institution": "Mairie de Bangangté (Cameroun)",
   "email": "alaingnassoumari1@gmail.com",
   "phone": "+237 71 42 47 90",
   "address": "Bangangté, Cameroun",
@@ -38,18 +38,49 @@
   ],
   "education": [
     {
-      "period": "",
+      "period": "2024 – 2025",
       "title": "Doctorat (Ph.D) en droit public",
-      "place": "Université de Dschang (Cameroun)",
+      "place": "Université de Dschang",
       "description": ""
     },
     {
-      "period": "",
-      "title": "Spécialisation en finances publiques",
-      "place": "PSSFP — Programme supérieur de spécialisation en finances publiques",
+      "period": "2021 – 2022",
+      "title": "Master II professionnel — Audit et contrôle des finances publiques",
+      "place": "PSSFP / MINFI",
+      "description": ""
+    },
+    {
+      "period": "2020 – 2021",
+      "title": "Master II en droit public, option finances publiques",
+      "place": "Université de Douala",
+      "description": ""
+    },
+    {
+      "period": "2019 – 2020",
+      "title": "Master I en droit public, option finances publiques",
+      "place": "Université de Yaoundé II",
+      "description": ""
+    },
+    {
+      "period": "2017 – 2019",
+      "title": "Licence en droit public",
+      "place": "Université de Yaoundé II",
+      "description": ""
+    },
+    {
+      "period": "2016 – 2017",
+      "title": "D.I.C.M. — Comptabilité-matières",
+      "place": "CFCM / MINFI",
       "description": ""
     }
   ],
-  "experience": [],
+  "experience": [
+    {
+      "period": "Actuellement",
+      "title": "Mairie de Bangangté",
+      "place": "Bangangté, Cameroun",
+      "description": ""
+    }
+  ],
   "distinctions": []
 }

@@ -3,6 +3,8 @@
 // vérifiés sur imjst.org (même auteur : même adresse e-mail, même université).
 // Tout ce qui n'a pas pu être vérifié est laissé vide, à compléter avec le Docteur.
 
+import { fr as PARCOURS_FR, en as PARCOURS_EN } from "./parcours.mjs";
+
 export const IMJST_ISSUE_2024 = "https://imjst.org/index.php/vol-9-issue-7-july-2024/";
 export const IMJST_PDF_2024 = "https://www.imjst.org/wp-content/uploads/2024/08/IMJSTP29121050.pdf";
 const COVER_2024 = "https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=1600&q=80&auto=format&fit=crop";
@@ -316,3 +318,7 @@ export const conferences = [
     },
   },
 ];
+
+/* Parcours académique et professionnel fournis par le Docteur (scripts/parcours.mjs). */
+Object.assign(profile, PARCOURS_FR);
+profile.en = { ...profile.en, ...PARCOURS_EN };
