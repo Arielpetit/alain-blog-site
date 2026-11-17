@@ -3,8 +3,8 @@ export const fr = {
   title: "Docteur (Ph.D) en droit public · Expert en finances publiques",
   institution: "Mairie de Bangangté (Cameroun)",
   bioShort:
-    "Docteur (Ph.D) en droit public de l'Université de Dschang et expert en finances publiques, en poste à la Mairie de Bangangté (Cameroun). Ses travaux portent sur la gouvernance financière publique, le contentieux financier public et le contrôle des biens publics.",
-  bioLong: `Docteur (Ph.D) en droit public de l'**Université de Dschang** et expert en finances publiques, Alain Bienvenu **Gnassoussoumari** exerce actuellement à la **Mairie de Bangangté** (Cameroun).
+    "Docteur (Ph.D) en droit public de l'Université de Dschang et expert en finances publiques, cadre à la Mairie de Bangangté (Cameroun). Ses travaux portent sur la gouvernance financière publique, le contentieux financier public et le contrôle des biens publics.",
+  bioLong: `Docteur (Ph.D) en droit public de l'**Université de Dschang** et expert en finances publiques, Alain Bienvenu **Gnassoussoumari** est actuellement cadre à la **Mairie de Bangangté** (Cameroun).
 
 Son parcours allie formation juridique et spécialisation financière : licence et master I en droit public à l'Université de Yaoundé II, master II en droit public (option finances publiques) à l'Université de Douala, master II professionnel en audit et contrôle des finances publiques au **PSSFP** (ministère des Finances), ainsi qu'un diplôme en comptabilité-matières obtenu au CFCM.
 
@@ -19,15 +19,15 @@ Ce site rassemble ses publications, ses analyses et ses coordonnées.`,
     { period: "2017 – 2019", title: "Licence en droit public", place: "Université de Yaoundé II", description: "" },
     { period: "2016 – 2017", title: "D.I.C.M. — Comptabilité-matières", place: "CFCM / MINFI", description: "" },
   ],
-  experience: [{ period: "Actuellement", title: "Mairie de Bangangté", place: "Bangangté, Cameroun", description: "" }],
+  experience: [{ period: "Actuellement", title: "Cadre", place: "Mairie de Bangangté (Cameroun)", description: "" }],
 };
 
 export const en = {
   title: "PhD in Public Law · Public finance expert",
   institution: "Bangangté Town Hall (Cameroon)",
   bioShort:
-    "PhD in Public Law from the University of Dschang and public finance expert, currently working at Bangangté Town Hall (Cameroon). His work focuses on public financial governance, public financial litigation and the control of public property.",
-  bioLong: `Holder of a PhD in Public Law from the **University of Dschang** and a public finance expert, Alain Bienvenu **Gnassoussoumari** currently works at **Bangangté Town Hall** (Cameroon).
+    "PhD in Public Law from the University of Dschang and public finance expert, currently a senior officer at Bangangté Town Hall (Cameroon). His work focuses on public financial governance, public financial litigation and the control of public property.",
+  bioLong: `Holder of a PhD in Public Law from the **University of Dschang** and a public finance expert, Alain Bienvenu **Gnassoussoumari** is currently a senior officer at **Bangangté Town Hall** (Cameroon).
 
 His background combines legal training and financial specialisation: a bachelor's degree and first-year master's in public law at the University of Yaoundé II, a master's degree in public law (public finance) at the University of Douala, a professional master's in public finance audit and control at the **PSSFP** (Ministry of Finance), and a diploma in materials accounting from the CFCM.
 
@@ -42,5 +42,5 @@ This site brings together his publications, analyses and contact details.`,
     { period: "2017 – 2019", title: "Bachelor's in Public Law", place: "University of Yaoundé II", description: "" },
     { period: "2016 – 2017", title: "D.I.C.M. — Materials accounting", place: "CFCM / Ministry of Finance", description: "" },
   ],
-  experience: [{ period: "Currently", title: "Bangangté Town Hall", place: "Bangangté, Cameroon", description: "" }],
+  experience: [{ period: "Currently", title: "Senior officer", place: "Bangangté Town Hall (Cameroon)", description: "" }],
 };
