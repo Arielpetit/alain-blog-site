@@ -298,8 +298,8 @@ articles.length = 0;
 
 export const conferences = [
   {
-    title: "Soutenance de thèse de doctorat (Ph.D) en droit",
-    event: "Soutenance publique de thèse",
+    title: "Soutenance de thèse de doctorat (Ph.D) en droit public",
+    event: "Université de Dschang — École doctorale",
     location: "Cameroun",
     date: "2026-01-04",
     role: "Doctorant",
@@ -309,8 +309,8 @@ export const conferences = [
     image: "https://kshheckxedarrothfinh.supabase.co/storage/v1/object/public/dr-media/conferences/soutenance-these-gnassoumari.webp",
     i18n: {
       en: {
-        title: "PhD defence in Law",
-        event: "Public thesis defence",
+        title: "PhD defence in Public Law",
+        event: "University of Dschang — Doctoral School",
         location: "Cameroon",
         role: "PhD candidate",
         description: "Video excerpt of Dr Alain Bienvenu Gnassoumari's thesis defence, published on YouTube on 4 January 2026.",

@@ -73,7 +73,7 @@ export const PUBLICATION_TYPES = {
   article: "Article de revue",
   ouvrage: "Ouvrage",
   chapitre: "Chapitre d'ouvrage",
-  these: "Thèse",
+  these: "Thèse / mémoire",
   communication: "Communication",
   rapport: "Rapport",
 } as const;
