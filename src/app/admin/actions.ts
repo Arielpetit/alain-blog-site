@@ -193,6 +193,21 @@ export async function saveConference(form: FormData) {
   await requireAdmin();
   const id = str(form, "id") || null;
   const existing = id ? await db.getConferenceById(id) : undefined;
+
+  // Médias : vidéos conservées (sauf retrait), galerie photos (retraits + nouveaux fichiers).
+  const videos = (existing?.i18n?.fr?.videos ?? []).filter((_, i) => !form.get(`removeVideo_${i}`));
+  const oldPhotos = existing?.i18n?.fr?.photos ?? [];
+  const photos = oldPhotos.filter((_, i) => !form.get(`removePhoto_${i}`));
+  for (const [i, p] of oldPhotos.entries()) if (form.get(`removePhoto_${i}`)) await db.removeMedia(p.url).catch(() => {});
+  for (const f of form.getAll("galleryFiles")) {
+    if (!(f instanceof File) || f.size === 0) continue;
+    const ext = f.name.slice(f.name.lastIndexOf(".")).toLowerCase();
+    if (![".jpg", ".jpeg", ".png", ".webp", ".gif"].includes(ext)) throw new Error(`Type de fichier non autorisé (${ext}).`);
+    if (f.size > MAX_UPLOAD) throw new Error("Fichier trop volumineux (15 Mo maximum).");
+    photos.push({ url: await db.uploadMedia(f, "conferences") });
+  }
+  const fr = { ...(videos.length ? { videos } : {}), ...(photos.length ? { photos } : {}) };
+
   await db.upsertConference(id, {
     title: str(form, "title"),
     event: str(form, "event"),
@@ -204,10 +219,7 @@ export async function saveConference(form: FormData) {
     slidesUrl: await media(form, { file: "slidesFile", url: "slidesUrl", remove: "removeSlides", current: existing?.slidesUrl ?? "", folder: "conferences" }),
     image: await media(form, { file: "imageFile", url: "image", remove: "removeImage", current: existing?.image ?? "", folder: "conferences" }),
     i18n: {
-      // Les vidéos ne se modifient pas dans ce formulaire : on les conserve (sauf retrait demandé).
-      ...((existing?.i18n?.fr?.videos ?? []).filter((_, i) => !form.get(`removeVideo_${i}`)).length
-        ? { fr: { videos: (existing?.i18n?.fr?.videos ?? []).filter((_, i) => !form.get(`removeVideo_${i}`)) } }
-        : {}),
+      ...(fr.videos?.length || fr.photos?.length ? { fr } : {}),
       ...enFields(form, ["title", "event", "location", "role", "description"]),
     },
   });

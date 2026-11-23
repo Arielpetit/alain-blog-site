@@ -98,6 +98,7 @@ export type Publication = {
   };
 };
 
+export type ConferencePhoto = { url: string; caption?: string };
 export type ConferenceVideo = { title: string; titleEn?: string; url: string; poster?: string };
 
 export const CONFERENCE_ROLES = [
@@ -121,7 +122,7 @@ export type Conference = {
   image: string;
   i18n: {
     /** fr.videos : vidéos de l'intervention (fichiers hébergés ou liens). */
-    fr?: { videos?: ConferenceVideo[] };
+    fr?: { videos?: ConferenceVideo[]; photos?: ConferencePhoto[] };
     en?: Partial<Pick<Conference, "title" | "event" | "location" | "role" | "description">>;
   };
 };

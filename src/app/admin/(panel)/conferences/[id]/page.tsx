@@ -89,7 +89,7 @@ export default async function EditConference({ params }: { params: Promise<{ id:
         </div>
         <div className="space-y-6">
           <Section title="Médias">
-            <FileField label="Photo de l'événement" fileName="imageFile" urlName="image" removeName="removeImage" current={c.image} accept="image/*" image hint="Image de la carte sur la page Conférences et sur l'accueil. Format paysage." />
+            <FileField label="Photo principale" fileName="imageFile" urlName="image" removeName="removeImage" current={c.image} accept="image/*" image hint="Image de la carte et de l'en-tête de la page de l'intervention. Format paysage." />
             {(c.i18n?.fr?.videos?.length ?? 0) > 0 && (
               <fieldset>
                 <legend className="field-label">Vidéos de l&apos;intervention</legend>
@@ -110,6 +110,30 @@ export default async function EditConference({ params }: { params: Promise<{ id:
                 <p className="field-hint">Affichées sous la conférence. Cochez « Retirer » puis enregistrez pour en supprimer une.</p>
               </fieldset>
             )}
+            <fieldset>
+              <legend className="field-label">Galerie photos</legend>
+              {(c.i18n?.fr?.photos?.length ?? 0) > 0 && (
+                <ul className="mb-3 grid grid-cols-3 gap-2">
+                  {c.i18n.fr!.photos!.map((p, i) => (
+                    <li key={p.url} className="relative overflow-hidden rounded-lg border border-line bg-surface">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={p.url} alt="" className="aspect-[4/3] w-full object-cover" />
+                      <label className="flex items-center gap-1.5 px-2 py-1.5 text-xs text-danger">
+                        <input type="checkbox" name={`removePhoto_${i}`} className="accent-[var(--color-danger)]" /> Retirer
+                      </label>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <input
+                type="file"
+                name="galleryFiles"
+                accept="image/*"
+                multiple
+                className="block w-full text-sm text-muted file:mr-3 file:rounded-md file:border-0 file:bg-accent-soft file:px-3 file:py-2 file:text-sm file:font-medium file:text-accent-dark hover:file:bg-accent hover:file:text-white"
+              />
+              <p className="field-hint">Photos supplémentaires, affichées sur la page de l&apos;intervention. Vous pouvez en choisir plusieurs à la fois.</p>
+            </fieldset>
             <FileField label="Support de présentation" fileName="slidesFile" urlName="slidesUrl" removeName="removeSlides" current={c.slidesUrl} accept=".pdf,.pptx" hint="PDF ou PowerPoint, 15 Mo max." />
           </Section>
         </div>

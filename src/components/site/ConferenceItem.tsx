@@ -1,11 +1,11 @@
-import { ExternalLink, MapPin, PlayCircle, Presentation } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight, Film, ImageIcon, MapPin } from "lucide-react";
 import type { Conference } from "@/lib/types";
-import { VideoGallery } from "./VideoGallery";
 import { cn, formatDate } from "@/lib/utils";
-import type { Locale } from "@/i18n/config";
+import { localePath, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 
-function DateBlock({ date, upcoming, lang, className }: { date: string; upcoming?: boolean; lang: Locale; className?: string }) {
+export function DateBlock({ date, upcoming, lang, className }: { date: string; upcoming?: boolean; lang: Locale; className?: string }) {
   return (
     <div
       className={cn(
@@ -21,52 +21,58 @@ function DateBlock({ date, upcoming, lang, className }: { date: string; upcoming
   );
 }
 
-export function ConferenceItem({ conf, upcoming, lang }: { conf: Conference & { videos?: { title: string; url: string; poster?: string }[] }; upcoming?: boolean; lang: Locale }) {
+type WithMedia = Conference & { videos?: unknown[]; photos?: unknown[] };
+
+export function ConferenceItem({ conf, upcoming, lang }: { conf: WithMedia; upcoming?: boolean; lang: Locale }) {
   const t = getDictionary(lang);
+  const nVideos = conf.videos?.length ?? 0;
+  const nPhotos = (conf.photos?.length ?? 0) + (conf.image ? 1 : 0);
   return (
-    <article
-      className={cn(
-        "card hover-lift group flex h-full flex-col overflow-hidden",
-        upcoming && "border-accent/40",
-      )}
-    >
+    <article className={cn("card hover-lift group relative flex h-full flex-col overflow-hidden", upcoming && "border-accent/40")}>
       {conf.image && (
         <div className="relative aspect-[16/9] overflow-hidden bg-navy">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={conf.image} alt={conf.title} loading="lazy" className="img-zoom h-full w-full object-cover object-[center_22%]" />
+          <img src={conf.image} alt="" loading="lazy" className="img-zoom h-full w-full object-cover object-[center_22%]" />
           <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-navy-deep/60 to-transparent" />
           <DateBlock date={conf.date} upcoming={upcoming} lang={lang} className="absolute bottom-3 left-4 shadow-lg sm:bottom-4 sm:left-6" />
         </div>
       )}
       <div className="flex flex-1 gap-4 p-4 sm:gap-5 sm:p-6">
         {!conf.image && <DateBlock date={conf.date} upcoming={upcoming} lang={lang} className="self-start" />}
-        <div className="min-w-0 flex-1">
+        <div className="flex min-w-0 flex-1 flex-col">
           <div className="flex flex-wrap items-center gap-2">
             <span className="badge">{conf.role}</span>
             {upcoming && <span className="badge badge-primary">{t.common.upcoming}</span>}
           </div>
-          <h3 className="mt-2 text-base font-semibold leading-snug text-ink sm:mt-2.5 sm:text-xl">{conf.title}</h3>
+          <h3 className="mt-2 text-base font-semibold leading-snug text-ink transition-colors group-hover:text-accent-dark sm:mt-2.5 sm:text-xl">
+            <Link href={localePath(lang, `/conferences/${conf.id}`)} className="after:absolute after:inset-0">
+              {conf.title}
+            </Link>
+          </h3>
           <p className="mt-1 text-sm font-medium text-ink/75">{conf.event}</p>
           <p className="mt-1.5 inline-flex items-center gap-1.5 text-sm text-muted">
             <MapPin className="size-3.5" aria-hidden /> {conf.location}
           </p>
-          {conf.description && <p className="mt-2.5 text-sm leading-relaxed text-muted sm:mt-3 sm:text-[0.95rem]">{conf.description}</p>}
-          {(conf.link || conf.slidesUrl) && (
-            <div className="mt-4 flex flex-wrap gap-2">
-              {conf.link && (
-                <a href={conf.link} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-sm">
-                  {/youtu\.?be/.test(conf.link) ? <PlayCircle className="size-3.5" aria-hidden /> : <ExternalLink className="size-3.5" aria-hidden />}
-                  {/youtu\.?be/.test(conf.link) ? t.conferences.video : t.conferences.program}
-                </a>
+          {conf.description && <p className="mt-2.5 line-clamp-3 text-sm leading-relaxed text-muted sm:mt-3 sm:text-[0.95rem]">{conf.description}</p>}
+          <div className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-4 text-sm">
+            <span className="inline-flex items-center gap-3 text-xs text-muted">
+              {nVideos > 0 && (
+                <span className="inline-flex items-center gap-1">
+                  <Film className="size-3.5" aria-hidden /> {nVideos}
+                </span>
               )}
-          <VideoGallery videos={conf.videos ?? []} label={t.conferences.videos} closeLabel={t.nav.closeMenu} />
-              {conf.slidesUrl && (
-                <a href={conf.slidesUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-sm">
-                  <Presentation className="size-3.5" aria-hidden /> {t.conferences.slides}
-                </a>
+              {nPhotos > 0 && (
+                <span className="inline-flex items-center gap-1">
+                  <ImageIcon className="size-3.5" aria-hidden /> {nPhotos}
+                </span>
               )}
-            </div>
-          )}
+              <span className="sr-only">{t.conferences.nMedia(nVideos, nPhotos)}</span>
+            </span>
+            <span className="inline-flex items-center gap-1 font-medium text-accent-dark">
+              {t.conferences.detail}
+              <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
+            </span>
+          </div>
         </div>
       </div>
     </article>
