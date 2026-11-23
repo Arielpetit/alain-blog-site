@@ -50,36 +50,61 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
   const [leadArticle, ...otherArticles] = articles;
   const href = (p: string) => localePath(lang, p);
   const nameWords = profile.name.split(" ");
-  const personLd = {
+  const personId = `${SITE_URL}/#person`;
+  const sameAs = [profile.socials.linkedin, profile.socials.x, profile.socials.facebook, profile.socials.scholar].filter(
+    (u) => u && !/search|results|\?q=|\?query=/i.test(u),
+  );
+  const graphLd = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: profile.name,
-    honorificPrefix: "Dr",
-    jobTitle: profile.title,
-    url: SITE_URL,
-    image: profile.photo || undefined,
-    email: profile.email || undefined,
-    description: profile.bioShort,
-    alumniOf: { "@type": "CollegeOrUniversity", name: "Université de Dschang" },
-    knowsAbout: profile.expertise.map((e) => e.title),
-    sameAs: [profile.socials.linkedin, profile.socials.x, profile.socials.facebook, profile.socials.scholar].filter(
-      (u) => u && !/search|results|\?q=|\?query=/i.test(u),
-    ),
-  };
-
-  const siteLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: profile.name,
-    url: SITE_URL,
-    inLanguage: ["fr", "en"],
-    publisher: { "@type": "Person", name: profile.name },
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": personId,
+        name: "Alain Bienvenu Gnassoumari",
+        alternateName: ["Dr Alain Bienvenu Gnassoumari", "Alain B. Gnassoumari", "A. B. Gnassoumari", "Alain Bienvenu Gnassoussoumari"],
+        honorificPrefix: "Dr",
+        url: SITE_URL,
+        mainEntityOfPage: `${SITE_URL}/`,
+        image: profile.photo || undefined,
+        email: profile.email || undefined,
+        description: profile.bioShort,
+        jobTitle: profile.title.split("·").map((x) => x.trim()).filter(Boolean),
+        worksFor: { "@type": "GovernmentOrganization", name: "Mairie de Bangangté", address: { "@type": "PostalAddress", addressCountry: "CM" } },
+        homeLocation: { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: "Yaoundé", addressCountry: "CM" } },
+        nationality: { "@type": "Country", name: "Cameroun" },
+        alumniOf: [
+          { "@type": "CollegeOrUniversity", name: "Université de Dschang" },
+          { "@type": "CollegeOrUniversity", name: "Université de Yaoundé II" },
+          { "@type": "CollegeOrUniversity", name: "Université de Douala" },
+        ],
+        hasCredential: { "@type": "EducationalOccupationalCredential", credentialCategory: "Doctorat (Ph.D) en droit public", recognizedBy: { "@type": "CollegeOrUniversity", name: "Université de Dschang" } },
+        knowsAbout: profile.expertise.map((e) => e.title),
+        knowsLanguage: ["fr", "en"],
+        ...(sameAs.length ? { sameAs } : {}),
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": `${SITE_URL}/#profile`,
+        url: `${SITE_URL}${lang === "en" ? "/en" : "/"}`,
+        name: profile.name,
+        inLanguage: lang,
+        mainEntity: { "@id": personId },
+        isPartOf: { "@id": `${SITE_URL}/#website` },
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        name: profile.name,
+        url: SITE_URL,
+        inLanguage: ["fr", "en"],
+        publisher: { "@id": personId },
+      },
+    ],
   };
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteLd).replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(graphLd).replace(/</g, "\\u003c") }} />
       {/* ================= Hero ================= */}
       <section className="relative overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute -right-40 -top-40 size-[36rem] rounded-full bg-accent-soft/80 blur-3xl dark:bg-accent-soft/60" />
