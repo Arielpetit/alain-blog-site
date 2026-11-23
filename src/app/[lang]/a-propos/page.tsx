@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { Award, Briefcase, GraduationCap, Mail, MapPin } from "lucide-react";
 import { getProfile } from "@/lib/db";
@@ -17,8 +18,9 @@ export const dynamic = "force-dynamic";
 type Props = { params: Promise<{ lang: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const t = getDictionary(await langFromParams(params));
-  return { title: t.about.eyebrow, description: t.about.metaDescription };
+  const lang = await langFromParams(params);
+  const t = getDictionary(lang);
+  return buildMetadata({ lang, path: "/a-propos", title: t.about.eyebrow, description: t.about.metaDescription, type: "profile" });
 }
 
 function Timeline({ items }: { items: TimelineItem[] }) {

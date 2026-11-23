@@ -13,7 +13,12 @@ const serif = Source_Serif_4({
   style: ["normal", "italic"],
 });
 
-export const metadata: Metadata = { metadataBase: new URL(SITE_URL) };
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
+  // Balise de vérification Search Console (facultative : la vérification DNS suffit aussi).
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ? { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } } : {}),
+};
 
 export const viewport: Viewport = {
   themeColor: [

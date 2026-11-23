@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, BookOpen, Calendar, ExternalLink, FileDown, Mail, Search, Tag, Users } from "lucide-react";
@@ -28,11 +29,13 @@ async function load(params: Props["params"]) {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { pub, lang } = await load(params);
   if (!pub) return {};
-  return {
+  return buildMetadata({
+    lang,
+    path: `/publications/${pub.id}`,
     title: pub.title,
     description: pub.abstract || `${pub.authors} — ${pub.venue}`,
-    alternates: { canonical: localePath(lang, `/publications/${pub.id}`) },
-  };
+    type: "article",
+  });
 }
 
 export default async function PublicationPage({ params }: Props) {

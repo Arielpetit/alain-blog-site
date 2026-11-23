@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowRight, Clock, GraduationCap, Mail, MapPin, Mic, Phone, Scale } from "lucide-react";
 import { getProfile } from "@/lib/db";
@@ -16,8 +17,9 @@ type Props = { params: Promise<{ lang: string }>; searchParams: Promise<{ objet?
 const REASON_ICONS = [Mic, Scale, GraduationCap];
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const t = getDictionary(await langFromParams(params)).contact;
-  return { title: t.eyebrow, description: t.description };
+  const lang = await langFromParams(params);
+  const t = getDictionary(lang).contact;
+  return buildMetadata({ lang, path: "/contact", title: t.eyebrow, description: t.description });
 }
 
 export default async function ContactPage({ params, searchParams }: Props) {

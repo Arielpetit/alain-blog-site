@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, ExternalLink, MapPin, PlayCircle, Presentation, UserRound, Users } from "lucide-react";
@@ -27,12 +28,14 @@ async function load(params: Props["params"]) {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { conf, lang } = await load(params);
   if (!conf) return {};
-  return {
+  return buildMetadata({
+    lang,
+    path: `/conferences/${conf.id}`,
     title: conf.title,
     description: conf.description || `${conf.event} — ${conf.location}`,
-    alternates: { canonical: localePath(lang, `/conferences/${conf.id}`) },
-    openGraph: { type: "article", title: conf.title, description: conf.description, ...(conf.image ? { images: [conf.image] } : {}) },
-  };
+    type: "article",
+    images: conf.image ? [conf.image] : undefined,
+  });
 }
 
 export default async function ConferencePage({ params }: Props) {

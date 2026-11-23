@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowRight, ChevronLeft, ChevronRight, PenLine, Search } from "lucide-react";
 import { getArticles } from "@/lib/db";
@@ -26,8 +27,9 @@ function href(lang: Locale, params: Query) {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const t = getDictionary(await langFromParams(params)).articles;
-  return { title: t.title, description: t.description };
+  const lang = await langFromParams(params);
+  const t = getDictionary(lang).articles;
+  return buildMetadata({ lang, path: "/articles", title: t.title, description: t.description });
 }
 
 export default async function ArticlesPage({ params, searchParams }: Props) {

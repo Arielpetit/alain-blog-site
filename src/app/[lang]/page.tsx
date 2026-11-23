@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import { shortName, SITE_URL } from "@/lib/utils";
+import { pageAlternates } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Landmark, Scale, ShieldCheck } from "lucide-react";
 import { getArticles, getConferences, getProfile, getPublications } from "@/lib/db";
@@ -18,6 +20,11 @@ export const dynamic = "force-dynamic";
 
 const EXPERTISE_ICONS = [Landmark, ShieldCheck, Scale, BookOpen];
 const CTA_IMAGE = "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1800&q=80&auto=format&fit=crop";
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
+  return { alternates: pageAlternates(isLocale(lang) ? lang : "fr", "/") };
+}
 
 export default async function HomePage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang: l } = await params;
@@ -60,8 +67,18 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
     ),
   };
 
+  const siteLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: profile.name,
+    url: SITE_URL,
+    inLanguage: ["fr", "en"],
+    publisher: { "@type": "Person", name: profile.name },
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteLd).replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd).replace(/</g, "\\u003c") }} />
       {/* ================= Hero ================= */}
       <section className="relative overflow-hidden">

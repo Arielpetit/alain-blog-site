@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { getConferences } from "@/lib/db";
@@ -13,8 +14,9 @@ export const dynamic = "force-dynamic";
 type Props = { params: Promise<{ lang: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const t = getDictionary(await langFromParams(params)).conferences;
-  return { title: t.title, description: t.description };
+  const lang = await langFromParams(params);
+  const t = getDictionary(lang).conferences;
+  return buildMetadata({ lang, path: "/conferences", title: t.title, description: t.description });
 }
 
 export default async function ConferencesPage({ params }: Props) {

@@ -33,7 +33,13 @@ export function initials(name: string) {
   return ((parts[0]?.[0] ?? "") + (parts.length > 1 ? parts[parts.length - 1][0] : "")).toUpperCase();
 }
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
+/** Adresse officielle du site (celle vers laquelle Vercel redirige). */
+export const PRODUCTION_URL = "https://www.alaingnassoumari.com";
+
+const envUrl = (process.env.NEXT_PUBLIC_SITE_URL || "").trim().replace(/\/$/, "");
+/** URL canonique : jamais le domaine technique *.vercel.app, qui ne doit pas être indexé. */
+export const SITE_URL =
+  envUrl && !/\.vercel\.app$/i.test(envUrl) ? envUrl : process.env.NODE_ENV === "production" ? PRODUCTION_URL : "http://localhost:3000";
 
 /** Nom court pour les espaces réduits : « Dr Alain Bienvenu X » → « Dr Alain X ». */
 export function shortName(name: string) {

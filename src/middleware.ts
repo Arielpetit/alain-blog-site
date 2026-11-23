@@ -41,6 +41,9 @@ export async function middleware(req: NextRequest) {
   }
 
   /* ---------- Site public : langue ---------- */
+  // Les images de partage générées par Next vivent sous /fr/… : les servir telles quelles.
+  if (/^\/fr\/(opengraph|twitter)-image\/?$/.test(pathname)) return NextResponse.next();
+
   // /fr/... → URL canonique sans préfixe
   if (pathname === "/fr" || pathname.startsWith("/fr/")) {
     const url = req.nextUrl.clone();

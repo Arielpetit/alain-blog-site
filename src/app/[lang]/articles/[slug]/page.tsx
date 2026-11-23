@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Clock, Languages } from "lucide-react";
@@ -30,22 +31,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const raw = await getArticleBySlug(slug);
   if (!raw) return { title: getDictionary(lang).articles.notFound };
   const article = localizeArticle(raw, lang);
-  return {
+  return buildMetadata({
+    lang,
+    path: `/articles/${article.slug}`,
     title: article.title,
     description: article.excerpt,
-    alternates: {
-      canonical: localePath(lang, `/articles/${article.slug}`),
-      languages: { fr: `/articles/${article.slug}`, en: `/en/articles/${article.slug}` },
-    },
-    openGraph: {
-      type: "article",
-      title: article.title,
-      description: article.excerpt,
-      publishedTime: article.date,
-      modifiedTime: article.updatedAt,
-      ...(article.cover ? { images: [article.cover] } : {}),
-    },
-  };
+    type: "article",
+    images: article.cover ? [article.cover] : undefined,
+    publishedTime: article.date,
+    modifiedTime: article.updatedAt,
+  });
 }
 
 export default async function ArticlePage({ params }: Props) {

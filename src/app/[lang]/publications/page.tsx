@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import { getPublications } from "@/lib/db";
 import { PAGE_IMAGES, PageHeader } from "@/components/site/PageHeader";
 import { PublicationsExplorer } from "@/components/site/PublicationsExplorer";
@@ -10,8 +11,9 @@ export const dynamic = "force-dynamic";
 type Props = { params: Promise<{ lang: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const t = getDictionary(await langFromParams(params)).publications;
-  return { title: t.title, description: t.description };
+  const lang = await langFromParams(params);
+  const t = getDictionary(lang).publications;
+  return buildMetadata({ lang, path: "/publications", title: t.title, description: t.description });
 }
 
 export default async function PublicationsPage({ params }: Props) {
