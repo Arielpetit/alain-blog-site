@@ -1,5 +1,6 @@
 import { ExternalLink, MapPin, PlayCircle, Presentation } from "lucide-react";
 import type { Conference } from "@/lib/types";
+import { VideoGallery } from "./VideoGallery";
 import { cn, formatDate } from "@/lib/utils";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -20,7 +21,7 @@ function DateBlock({ date, upcoming, lang, className }: { date: string; upcoming
   );
 }
 
-export function ConferenceItem({ conf, upcoming, lang }: { conf: Conference; upcoming?: boolean; lang: Locale }) {
+export function ConferenceItem({ conf, upcoming, lang }: { conf: Conference & { videos?: { title: string; url: string; poster?: string }[] }; upcoming?: boolean; lang: Locale }) {
   const t = getDictionary(lang);
   return (
     <article
@@ -58,6 +59,7 @@ export function ConferenceItem({ conf, upcoming, lang }: { conf: Conference; upc
                   {/youtu\.?be/.test(conf.link) ? t.conferences.video : t.conferences.program}
                 </a>
               )}
+          <VideoGallery videos={conf.videos ?? []} label={t.conferences.videos} closeLabel={t.nav.closeMenu} />
               {conf.slidesUrl && (
                 <a href={conf.slidesUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-sm">
                   <Presentation className="size-3.5" aria-hidden /> {t.conferences.slides}

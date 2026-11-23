@@ -90,6 +90,26 @@ export default async function EditConference({ params }: { params: Promise<{ id:
         <div className="space-y-6">
           <Section title="Médias">
             <FileField label="Photo de l'événement" fileName="imageFile" urlName="image" removeName="removeImage" current={c.image} accept="image/*" image hint="Image de la carte sur la page Conférences et sur l'accueil. Format paysage." />
+            {(c.i18n?.fr?.videos?.length ?? 0) > 0 && (
+              <fieldset>
+                <legend className="field-label">Vidéos de l&apos;intervention</legend>
+                <ul className="space-y-2">
+                  {c.i18n.fr!.videos!.map((v, i) => (
+                    <li key={v.url} className="flex items-center gap-3 rounded-lg border border-line bg-surface p-2">
+                      {v.poster && (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={v.poster} alt="" className="h-12 w-20 shrink-0 rounded object-cover" />
+                      )}
+                      <span className="min-w-0 flex-1 truncate text-sm text-ink">{v.title}</span>
+                      <label className="flex shrink-0 items-center gap-1.5 text-xs text-danger">
+                        <input type="checkbox" name={`removeVideo_${i}`} className="accent-[var(--color-danger)]" /> Retirer
+                      </label>
+                    </li>
+                  ))}
+                </ul>
+                <p className="field-hint">Affichées sous la conférence. Cochez « Retirer » puis enregistrez pour en supprimer une.</p>
+              </fieldset>
+            )}
             <FileField label="Support de présentation" fileName="slidesFile" urlName="slidesUrl" removeName="removeSlides" current={c.slidesUrl} accept=".pdf,.pptx" hint="PDF ou PowerPoint, 15 Mo max." />
           </Section>
         </div>

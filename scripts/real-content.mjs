@@ -35,7 +35,7 @@ export const profile = {
   institution: "Université de Dschang (Cameroun)",
   email: "alaingnassoumari1@gmail.com",
   phone: "+237 71 42 47 90",
-  address: "Bangangté, Cameroun",
+  address: "Yaoundé, Cameroun",
   socials: {
     // Liens temporaires (recherche du nom) : à remplacer par les profils réels dans l'admin.
     linkedin: "https://www.linkedin.com/search/results/all/?keywords=Alain%20Bienvenu%20Gnassoumari",

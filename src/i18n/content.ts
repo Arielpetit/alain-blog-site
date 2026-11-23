@@ -35,11 +35,13 @@ export function localizePublication(p: Publication, lang: Locale): Publication &
   };
 }
 
-export function localizeConference(c: Conference, lang: Locale): Conference {
+export function localizeConference(c: Conference, lang: Locale): Conference & { videos: { title: string; url: string; poster?: string }[] } {
+  const videos = (c.i18n?.fr?.videos ?? []).map((v) => ({ title: lang === "en" && v.titleEn ? v.titleEn : v.title, url: v.url, poster: v.poster }));
   const en = lang === "en" ? c.i18n?.en : undefined;
-  if (!en) return c;
+  if (!en) return { ...c, videos };
   return {
     ...c,
+    videos,
     title: pick(c.title, en.title),
     event: pick(c.event, en.event),
     location: pick(c.location, en.location),

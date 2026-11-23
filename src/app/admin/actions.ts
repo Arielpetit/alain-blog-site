@@ -203,7 +203,13 @@ export async function saveConference(form: FormData) {
     link: str(form, "link"),
     slidesUrl: await media(form, { file: "slidesFile", url: "slidesUrl", remove: "removeSlides", current: existing?.slidesUrl ?? "", folder: "conferences" }),
     image: await media(form, { file: "imageFile", url: "image", remove: "removeImage", current: existing?.image ?? "", folder: "conferences" }),
-    i18n: enFields(form, ["title", "event", "location", "role", "description"]),
+    i18n: {
+      // Les vidéos ne se modifient pas dans ce formulaire : on les conserve (sauf retrait demandé).
+      ...((existing?.i18n?.fr?.videos ?? []).filter((_, i) => !form.get(`removeVideo_${i}`)).length
+        ? { fr: { videos: (existing?.i18n?.fr?.videos ?? []).filter((_, i) => !form.get(`removeVideo_${i}`)) } }
+        : {}),
+      ...enFields(form, ["title", "event", "location", "role", "description"]),
+    },
   });
   refresh();
   redirect(`/admin/conferences?ok=${id ? "modifie" : "cree"}`);
