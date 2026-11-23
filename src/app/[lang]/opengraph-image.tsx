@@ -6,7 +6,7 @@ import { localizeProfile } from "@/i18n/content";
 
 export const size = OG_SIZE;
 export const contentType = "image/png";
-export const alt = "Dr Alain Bienvenu Gnassoussoumari";
+export const alt = "Dr Alain Bienvenu Gnassoumari";
 
 export default async function Image({ params }: { params: Promise<{ lang: string }> }) {
   const { lang: l } = await params;

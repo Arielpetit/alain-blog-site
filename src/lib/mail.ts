@@ -15,7 +15,7 @@ export async function sendContactEmail(to: string, m: ContactMail) {
   if (!key) throw new Error("RESEND_API_KEY manquant : impossible d'envoyer l'e-mail de contact.");
   if (!to) throw new Error("Aucune adresse e-mail de destination dans le profil.");
 
-  const from = process.env.CONTACT_FROM || "Site du Dr Gnassoussoumari <onboarding@resend.dev>";
+  const from = process.env.CONTACT_FROM || "Site du Dr Gnassoumari <onboarding@resend.dev>";
   const rows = [
     ["Nom", m.name],
     ["E-mail", m.email],

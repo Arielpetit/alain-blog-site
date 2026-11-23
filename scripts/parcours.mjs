@@ -4,7 +4,7 @@ export const fr = {
   institution: "Mairie de Bangangté (Cameroun)",
   bioShort:
     "Docteur (Ph.D) en droit public de l'Université de Dschang et expert en finances publiques, cadre à la Mairie de Bangangté (Cameroun). Ses travaux portent sur la gouvernance financière publique, le contentieux financier public et le contrôle des biens publics.",
-  bioLong: `Docteur (Ph.D) en droit public de l'**Université de Dschang** et expert en finances publiques, Alain Bienvenu **Gnassoussoumari** est actuellement cadre à la **Mairie de Bangangté** (Cameroun).
+  bioLong: `Docteur (Ph.D) en droit public de l'**Université de Dschang** et expert en finances publiques, Alain Bienvenu **Gnassoumari** est actuellement cadre à la **Mairie de Bangangté** (Cameroun).
 
 Son parcours allie formation juridique et spécialisation financière : licence et master I en droit public à l'Université de Yaoundé II, master II en droit public (option finances publiques) à l'Université de Douala, master II professionnel en audit et contrôle des finances publiques au **PSSFP** (ministère des Finances), ainsi qu'un diplôme en comptabilité-matières obtenu au CFCM.
 
@@ -27,7 +27,7 @@ export const en = {
   institution: "Bangangté Town Hall (Cameroon)",
   bioShort:
     "PhD in Public Law from the University of Dschang and public finance expert, currently a senior officer at Bangangté Town Hall (Cameroon). His work focuses on public financial governance, public financial litigation and the control of public property.",
-  bioLong: `Holder of a PhD in Public Law from the **University of Dschang** and a public finance expert, Alain Bienvenu **Gnassoussoumari** is currently a senior officer at **Bangangté Town Hall** (Cameroon).
+  bioLong: `Holder of a PhD in Public Law from the **University of Dschang** and a public finance expert, Alain Bienvenu **Gnassoumari** is currently a senior officer at **Bangangté Town Hall** (Cameroon).
 
 His background combines legal training and financial specialisation: a bachelor's degree and first-year master's in public law at the University of Yaoundé II, a master's degree in public law (public finance) at the University of Douala, a professional master's in public finance audit and control at the **PSSFP** (Ministry of Finance), and a diploma in materials accounting from the CFCM.
 
