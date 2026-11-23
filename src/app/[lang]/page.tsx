@@ -1,4 +1,4 @@
-import { shortName } from "@/lib/utils";
+import { shortName, SITE_URL } from "@/lib/utils";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Landmark, Scale, ShieldCheck } from "lucide-react";
 import { getArticles, getConferences, getProfile, getPublications } from "@/lib/db";
@@ -43,9 +43,26 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
   const [leadArticle, ...otherArticles] = articles;
   const href = (p: string) => localePath(lang, p);
   const nameWords = profile.name.split(" ");
+  const personLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: profile.name,
+    honorificPrefix: "Dr",
+    jobTitle: profile.title,
+    url: SITE_URL,
+    image: profile.photo || undefined,
+    email: profile.email || undefined,
+    description: profile.bioShort,
+    alumniOf: { "@type": "CollegeOrUniversity", name: "Université de Dschang" },
+    knowsAbout: profile.expertise.map((e) => e.title),
+    sameAs: [profile.socials.linkedin, profile.socials.x, profile.socials.facebook, profile.socials.scholar].filter(
+      (u) => u && !/search|results|\?q=|\?query=/i.test(u),
+    ),
+  };
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd).replace(/</g, "\\u003c") }} />
       {/* ================= Hero ================= */}
       <section className="relative overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute -right-40 -top-40 size-[36rem] rounded-full bg-accent-soft/80 blur-3xl dark:bg-accent-soft/60" />
