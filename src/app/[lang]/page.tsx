@@ -69,7 +69,6 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         email: profile.email || undefined,
         description: profile.bioShort,
         jobTitle: profile.title.split("·").map((x) => x.trim()).filter(Boolean),
-        worksFor: { "@type": "GovernmentOrganization", name: "Mairie de Bangangté", address: { "@type": "PostalAddress", addressCountry: "CM" } },
         homeLocation: { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: "Yaoundé", addressCountry: "CM" } },
         nationality: { "@type": "Country", name: "Cameroun" },
         alumniOf: [

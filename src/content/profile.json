@@ -2,11 +2,11 @@
   "name": "Dr Alain Bienvenu Gnassoumari",
   "title": "Docteur (Ph.D) en droit public · Expert en finances publiques",
   "tagline": "Contrôler, évaluer, rendre compte : au cœur de la gouvernance financière publique.",
-  "bioShort": "Docteur (Ph.D) en droit public de l'Université de Dschang et expert en finances publiques, cadre à la Mairie de Bangangté (Cameroun). Ses travaux portent sur la gouvernance financière publique, le contentieux financier public et le contrôle des biens publics.",
-  "bioLong": "Docteur (Ph.D) en droit public de l'**Université de Dschang** et expert en finances publiques, Alain Bienvenu **Gnassoumari** est actuellement cadre à la **Mairie de Bangangté** (Cameroun).\n\nSon parcours allie formation juridique et spécialisation financière : licence et master I en droit public à l'Université de Yaoundé II, master II en droit public (option finances publiques) à l'Université de Douala, master II professionnel en audit et contrôle des finances publiques au **PSSFP** (ministère des Finances), ainsi qu'un diplôme en comptabilité-matières obtenu au CFCM.\n\nSes recherches portent sur la **nouvelle gouvernance financière publique** au Cameroun : le passage d'une logique de moyens à une logique de résultats, la place du **contrôle administratif des biens publics**, l'effectivité des réformes issues de la loi de 2018 portant régime financier de l'État, ainsi que la **justice financière** et la responsabilité des gestionnaires de crédits publics.\n\nCe site rassemble ses publications, ses analyses et ses coordonnées.",
+  "bioShort": "Docteur (Ph.D) en droit public de l'Université de Dschang et expert en finances publiques (Cameroun). Ses travaux portent sur la gouvernance financière publique, le contentieux financier public et le contrôle des biens publics.",
+  "bioLong": "Docteur (Ph.D) en droit public de l'**Université de Dschang** et expert en finances publiques, Alain Bienvenu **Gnassoumari** consacre ses travaux à la gouvernance financière publique au Cameroun.\n\nSon parcours allie formation juridique et spécialisation financière : licence et master I en droit public à l'Université de Yaoundé II, master II en droit public (option finances publiques) à l'Université de Douala, master II professionnel en audit et contrôle des finances publiques au **PSSFP** (ministère des Finances), ainsi qu'un diplôme en comptabilité-matières obtenu au CFCM.\n\nSes recherches portent sur la **nouvelle gouvernance financière publique** au Cameroun : le passage d'une logique de moyens à une logique de résultats, la place du **contrôle administratif des biens publics**, l'effectivité des réformes issues de la loi de 2018 portant régime financier de l'État, ainsi que la **justice financière** et la responsabilité des gestionnaires de crédits publics.\n\nCe site rassemble ses publications, ses analyses et ses coordonnées.",
   "photo": "",
   "heroImage": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1400&q=80&auto=format&fit=crop",
-  "institution": "Mairie de Bangangté (Cameroun)",
+  "institution": "Université de Dschang (Cameroun)",
   "email": "alaingnassoumari1@gmail.com",
   "phone": "+237 71 42 47 90",
   "address": "Yaoundé, Cameroun",
@@ -74,13 +74,6 @@
       "description": ""
     }
   ],
-  "experience": [
-    {
-      "period": "Actuellement",
-      "title": "Cadre",
-      "place": "Mairie de Bangangté (Cameroun)",
-      "description": ""
-    }
-  ],
+  "experience": [],
   "distinctions": []
 }
