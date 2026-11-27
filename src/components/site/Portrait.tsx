@@ -18,7 +18,7 @@ export function Portrait({
     <div className={cn("relative overflow-hidden bg-navy", avatar ? "rounded-full" : "rounded-2xl", className)}>
       {photo ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={photo} alt={avatar ? "" : name} className="h-full w-full object-cover" />
+        <img src={photo} alt={avatar ? "" : name} className="h-full w-full object-cover object-top" />
       ) : avatar ? (
         <LogoMark className="h-full w-full" />
       ) : (

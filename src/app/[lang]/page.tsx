@@ -147,12 +147,13 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                 <img
                   src={profile.photo || profile.heroImage}
                   alt={profile.photo ? profile.name : ""}
-                  className="h-full w-full animate-ken-burns object-cover"
+                  className={`h-full w-full animate-ken-burns object-cover ${profile.photo ? "object-top" : ""}`}
                 />
               ) : (
                 <Portrait name={profile.name} photo="" className="h-full w-full rounded-none" />
               )}
-              <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-navy-deep/65 via-transparent to-navy-deep/50" />
+              <div aria-hidden className={profile.photo ? "absolute inset-0 bg-gradient-to-t from-navy-deep/45 via-transparent to-transparent" : "absolute inset-0 bg-gradient-to-b from-navy-deep/65 via-transparent to-navy-deep/50"} />
+              {!profile.photo && (
               <div className="absolute inset-x-5 top-5 flex animate-fade-up items-center gap-3 [animation-delay:1100ms]">
                 <Portrait name={profile.name} photo={profile.photo} avatar className="size-11 text-sm ring-2 ring-white/70" />
                 <div className="min-w-0 leading-tight text-white [text-shadow:0_1px_8px_rgb(0_0_0/0.45)]">
@@ -160,6 +161,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                   <p className="mt-0.5 truncate text-xs text-white/85">{profile.institution}</p>
                 </div>
               </div>
+              )}
             </div>
             {featuredPubs[0] && (
               <Link
